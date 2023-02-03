@@ -17,7 +17,7 @@ public class NetworkSyncManager : MonoBehaviour
     //public int remotePort = 3234;
     [Header("Events")]
     public UnityEvent<string> onUdpMessageRecived;
-    
+
 
     private Thread recieveThread;
     private event Action mainThreadQueuedCallbacks;
@@ -62,9 +62,9 @@ public class NetworkSyncManager : MonoBehaviour
             receiver.Close();
         }
     }
-    public void BroadcastUdpMessage(string message, List<string>clientsAdress, int remotePort)
+    public void BroadcastUdpMessage(string message, List<string> clientsAdress, int remotePort)
     {
-        for(int i=0; i<clientsAdress.Count; i++)
+        for (int i = 0; i < clientsAdress.Count; i++)
         {
             SendUdpMessage(message, clientsAdress[i], remotePort);
         }
@@ -79,7 +79,7 @@ public class NetworkSyncManager : MonoBehaviour
             sender.Send(dataBytes, dataBytes.Length, remoteAddress, remotePort);
             sender.Close();
         }
-        catch 
+        catch
         {
         }
     }

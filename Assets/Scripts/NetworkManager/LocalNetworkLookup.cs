@@ -30,16 +30,16 @@ public class PlayerClient
     {
         get
         {
-            return _isOnline; 
+            return _isOnline;
         }
     }
     void StartTask()
     {
         tokenSource = new CancellationTokenSource();
         cancellationToken = tokenSource.Token;
-        Task.Run(async() =>
+        Task.Run(async () =>
         {
-            await Task.Delay((int)(_timeoutSec*1000), cancellationToken);
+            await Task.Delay((int)(_timeoutSec * 1000), cancellationToken);
             _isOnline = false;
             OnPlayerDisonnected?.Invoke(ipAddress);
         }, cancellationToken);
@@ -87,7 +87,7 @@ public class LocalNetworkLookup : MonoBehaviour
     public UnityEvent<string> onWentOnline;
     public string localIP;
     public int localPort = 3238;
-    public int expectedUnityCount=3;
+    public int expectedUnityCount = 3;
     public int expectedBsCount = 0;
     public UnityEvent onReady;
     private IEnumerator networkUpdater;
@@ -123,12 +123,12 @@ public class LocalNetworkLookup : MonoBehaviour
             // public int expectedBsCount = 0;
             if (clientsBR.Count == expectedBsCount && clientsUN.Count == expectedUnityCount && !isStarted)
             {
-                    isStarted = true;
-                    onReady.Invoke();
+                isStarted = true;
+                onReady.Invoke();
             }
         }
     }
-    private void Awake()
+    private void Start()
     {
         clientsBR = new List<PlayerClient>();
         clientsUN = new List<PlayerClient>();
@@ -177,7 +177,7 @@ public class LocalNetworkLookup : MonoBehaviour
         string clientIP;
         if (message.Contains("UNITY"))
         {
-            clientIP = message.Substring(message.LastIndexOf('Y')+1);
+            clientIP = message.Substring(message.LastIndexOf('Y') + 1);
             RegisterClientByIp(clientIP, clientsUN, true);
             //onNewClientUN.Invoke(clientsUN);
         }
