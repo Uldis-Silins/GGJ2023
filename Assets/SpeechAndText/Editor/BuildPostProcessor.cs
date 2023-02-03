@@ -1,8 +1,11 @@
 //This is a modified version of https://gist.github.com/eppz/1ebbc1cf6a77741f56d63d3803e57ba3
+#if UNITY_IPHONE
 using System.IO;
 using UnityEditor;
 using UnityEditor.Callbacks;
+
 using UnityEditor.iOS.Xcode;
+
 
 public class BuildPostProcessor
 {
@@ -43,3 +46,4 @@ public class BuildPostProcessor
         project.AddBuildProperty(targetGUID, "OTHER_LDFLAGS", "-ObjC");
     }
 }
+#endif
