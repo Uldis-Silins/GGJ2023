@@ -26,6 +26,8 @@ public class InputController : MonoBehaviour
 
     private void Start()
     {
+        SpeechRecognizer.SetDetectionLanguage("en-US");
+
         if (SpeechRecognizer.ExistsOnDevice())
         {
             m_speechListener.onAuthorizationStatusFetched.AddListener(OnAuthorizationStatusFetched);
