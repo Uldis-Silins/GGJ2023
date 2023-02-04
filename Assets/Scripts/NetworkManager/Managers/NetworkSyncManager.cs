@@ -29,6 +29,7 @@ public class NetworkSyncManager : MonoBehaviour
 
     void Awake()
     {
+        /*
         if (instance == null)
         {
             instance = this;
@@ -39,9 +40,8 @@ public class NetworkSyncManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
         InitializeManager();
-    }
-    private void InitializeManager()
-    {
+
+        */
         recieveThread = new Thread(ReciverLoop);
         recieveThread.Start();
     }
