@@ -18,7 +18,7 @@ public class EnemyController : MonoBehaviour
     private readonly int m_hitAnimationHash = Animator.StringToHash("Hit");
     private readonly int m_attackIdAnimationHash = Animator.StringToHash("AttackId");
     private readonly int m_defenceIdAnimationHash = Animator.StringToHash("DefenceId");
-
+    private readonly int m_hitIdAnimationHash = Animator.StringToHash("HashId");
 
     private void Update()
     {
@@ -43,8 +43,9 @@ public class EnemyController : MonoBehaviour
         m_animator.transform.parent.eulerAngles = m_playerModels.models[index].eulerOffset;
     }
 
-    public void SetHit()
+    public void SetHit(int hitId)
     {
+        m_animator.SetInteger(m_hitIdAnimationHash, hitId);
         m_animator.SetTrigger(m_hitAnimationHash);
     }
 
