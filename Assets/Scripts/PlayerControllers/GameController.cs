@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+//using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 
 public class GameController : MonoBehaviour
@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private PlayerController m_playerPrefab;
     [SerializeField] private EnemyController m_enemyPrefab;
     [SerializeField] private InputController m_inputController;
+    [SerializeField] private UI_Controller m_uiController;
 
     private PlayerController m_spawnedPlayer;
     private EnemyController m_spawnedEnemy;
