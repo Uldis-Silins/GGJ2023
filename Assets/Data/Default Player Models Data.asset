@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   models:
   - playerObject: {fileID: 7860086515932856834, guid: 952c5dddb7b4748b4839a7c6913e2857, type: 3}
+    particles: {fileID: 4655731947666026444, guid: 952c5dddb7b4748b4839a7c6913e2857, type: 3}
     eulerOffset: {x: 0, y: 50, z: 0}
   - playerObject: {fileID: 680234825390730952, guid: 276978a69ae2e459fa1e8cbf34433a4b, type: 3}
+    particles: {fileID: 2114685169842128681, guid: 276978a69ae2e459fa1e8cbf34433a4b, type: 3}
     eulerOffset: {x: 0, y: 0, z: 0}

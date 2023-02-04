@@ -90,7 +90,7 @@ public class InputController : MonoBehaviour
 
     public void OnEndOfSpeech()
     {
-        onResultReceived.Invoke("block");
+        
     }
 
     public void OnError(string error)

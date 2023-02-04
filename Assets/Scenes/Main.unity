@@ -1612,6 +1612,7 @@ MonoBehaviour:
   m_playerPrefab: {fileID: 5746402507004538725, guid: e97303631f3724886911fdc6e26be0a7, type: 3}
   m_enemyPrefab: {fileID: 1203246124406022539, guid: 048704272133447938a4931dc4ed0ba2, type: 3}
   m_inputController: {fileID: 1476611441}
+  m_uiController: {fileID: 0}
 --- !u!4 &1821387409
 Transform:
   m_ObjectHideFlags: 0
@@ -1732,6 +1733,8 @@ MonoBehaviour:
   - type: 3
     objects:
     - {fileID: 424301173}
+  m_playerHealth: {fileID: 0}
+  m_opponentHealth: {fileID: 0}
 --- !u!4 &2008392364
 Transform:
   m_ObjectHideFlags: 0

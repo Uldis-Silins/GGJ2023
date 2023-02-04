@@ -8,7 +8,8 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private PlayerModels m_playerModels;
 
-    [SerializeField] private Animator m_animator;
+    private Animator m_animator;
+    private HitParticlesController m_particles;
 
     private float m_defenceAnimationTimer = 0f;
     private bool m_inDefence;
@@ -18,7 +19,7 @@ public class EnemyController : MonoBehaviour
     private readonly int m_hitAnimationHash = Animator.StringToHash("Hit");
     private readonly int m_attackIdAnimationHash = Animator.StringToHash("AttackId");
     private readonly int m_defenceIdAnimationHash = Animator.StringToHash("DefenceId");
-    private readonly int m_hitIdAnimationHash = Animator.StringToHash("HashId");
+    private readonly int m_hitIdAnimationHash = Animator.StringToHash("HitId");
 
     private void Update()
     {
@@ -39,12 +40,15 @@ public class EnemyController : MonoBehaviour
 
     public void SpawnModel(int index)
     {
-        m_animator = Instantiate<GameObject>(m_playerModels.models[index].playerObject, transform).GetComponentInChildren<Animator>();
+        var instance = Instantiate<GameObject>(m_playerModels.models[index].playerObject, transform);
+        m_animator = instance.GetComponentInChildren<Animator>();
+        m_particles = instance.GetComponent<HitParticlesController>();
         m_animator.transform.parent.eulerAngles = m_playerModels.models[index].eulerOffset;
     }
 
     public void SetHit(int hitId)
     {
+        m_particles.PlayBloodHit(Random.Range(0, 2));
         m_animator.SetInteger(m_hitIdAnimationHash, hitId);
         m_animator.SetTrigger(m_hitAnimationHash);
     }
