@@ -1307,7 +1307,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_arPlaneManager: {fileID: 221191053}
-  m_playerPrefab: {fileID: 1228578950623438658, guid: 952c5dddb7b4748b4839a7c6913e2857, type: 3}
+  m_playerPrefab: {fileID: 5746402507004538725, guid: e97303631f3724886911fdc6e26be0a7, type: 3}
+  m_enemyPrefab: {fileID: 1203246124406022539, guid: 048704272133447938a4931dc4ed0ba2, type: 3}
+  m_inputController: {fileID: 1476611441}
 --- !u!4 &1821387409
 Transform:
   m_ObjectHideFlags: 0
