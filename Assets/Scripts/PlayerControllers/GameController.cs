@@ -50,7 +50,7 @@ public class GameController : MonoBehaviour
             }
             else if(Input.GetKeyDown(KeyCode.S))
             {
-                m_spawnedPlayer.ExecuteCommand("block");
+                m_spawnedPlayer.ExecuteCommand("black");
                 m_spawnedEnemy.ExecuteCommand(CommandSynonyms.ActionType.Attack);
             }
             else if(Input.GetKeyDown(KeyCode.D))
