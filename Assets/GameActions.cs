@@ -12,7 +12,20 @@ public class GameActions : MonoBehaviour
     private TMPro.TextMeshProUGUI myStatusText;
     [SerializeField]
     private TMPro.TextMeshProUGUI opponentStatusText;
+    //SENDING
+    //reg role
+    void RegisterAsGopstop()
+    {
 
+    }
+    void RegisterAsChika()
+    {
+
+    }
+    void RegisterAsLookyloos()
+    {
+
+    }
     //SENDING
     //actions
     private void SendAction(string actionMsg)//hit, pch, blk
@@ -101,11 +114,11 @@ public class GameActions : MonoBehaviour
         }
     }
     //fails
-    void ReciveAgressionFail(string actionFrom)//BecauseOfBlock
+    public void ReciveAgressionFail(string actionFrom)//BecauseOfBlock
     {
 
     }
-    void ReciveBlockFail(string actionFrom)//Because of agression
+    public void ReciveBlockFail(string actionFrom)//Because of agression
     {
 
     }

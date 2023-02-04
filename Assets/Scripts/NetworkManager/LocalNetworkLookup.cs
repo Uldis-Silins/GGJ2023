@@ -19,6 +19,7 @@ public class PlayerClient
     CancellationToken cancellationToken;
     public event Action<string> OnPlayerConnected;
     public event Action<string> OnPlayerDisonnected;
+    public int id = -1;
     public string ipAddress
     {
         get
@@ -87,6 +88,7 @@ public class LocalNetworkLookup : MonoBehaviour
     public List<PlayerClient> clientsUN;
     public UnityEvent<string> onWentOffline;
     public UnityEvent<string> onWentOnline;
+    public int myId = 0;
     public string localIP;
     public int localPort = 3238;
     public int expectedUnityCount = 3;

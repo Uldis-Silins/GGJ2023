@@ -1,101 +1,71 @@
 {
-    "m_SelectedDeviceId": "RF8MC00W2RV",
+    "m_SelectedDeviceId": "5a34db9e",
     "m_SelectedPackage": {
-        "deviceId": "RF8MC00W2RV",
-        "name": "com.cheapbeer.pubfight",
-        "processId": 17884,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "RF8MC00W2RV",
-            "name": "com.sec.android.app.launcher",
-            "processId": 2440,
+            "name": "com.cheapbeer.pubfight",
+            "processId": 14285,
             "exited": false
         },
         {
             "deviceId": "RF8MC00W2RV",
             "name": "com.cheapbeer.pubfight",
-            "processId": 14240,
-            "exited": true
-        },
-        {
-            "deviceId": "RF8MC00W2RV",
-            "name": "com.cheapbeer.pubfight",
-            "processId": 15424,
-            "exited": true
-        },
-        {
-            "deviceId": "RF8MC00W2RV",
-            "name": "com.cheapbeer.pubfight",
-            "processId": 16263,
-            "exited": true
-        },
-        {
-            "deviceId": "RF8MC00W2RV",
-            "name": "com.cheapbeer.pubfight",
-            "processId": 22793,
-            "exited": true
-        },
-        {
-            "deviceId": "RF8MC00W2RV",
-            "name": "com.cheapbeer.pubfight",
-            "processId": 24671,
+            "processId": 16720,
             "exited": false
         },
         {
             "deviceId": "RF8MC00W2RV",
             "name": "com.cheapbeer.pubfight",
-            "processId": 27388,
+            "processId": 17300,
             "exited": false
         },
         {
             "deviceId": "RF8MC00W2RV",
             "name": "com.cheapbeer.pubfight",
-            "processId": 28526,
+            "processId": 18913,
             "exited": false
         },
         {
-            "deviceId": "RF8MC00W2RV",
+            "deviceId": "5a34db9e",
             "name": "com.cheapbeer.pubfight",
-            "processId": 3426,
+            "processId": 15562,
             "exited": false
         },
         {
-            "deviceId": "RF8MC00W2RV",
+            "deviceId": "5a34db9e",
             "name": "com.cheapbeer.pubfight",
-            "processId": 6754,
+            "processId": 21268,
             "exited": false
         },
         {
-            "deviceId": "RF8MC00W2RV",
+            "deviceId": "5a34db9e",
             "name": "com.cheapbeer.pubfight",
-            "processId": 12743,
+            "processId": 32263,
             "exited": false
         },
         {
-            "deviceId": "RF8MC00W2RV",
+            "deviceId": "5a34db9e",
             "name": "com.cheapbeer.pubfight",
-            "processId": 14737,
+            "processId": 317,
             "exited": false
         },
         {
-            "deviceId": "RF8MC00W2RV",
+            "deviceId": "5a34db9e",
             "name": "com.cheapbeer.pubfight",
-            "processId": 16244,
+            "processId": 3644,
             "exited": false
         },
         {
-            "deviceId": "RF8MC00W2RV",
+            "deviceId": "5a34db9e",
             "name": "com.cheapbeer.pubfight",
-            "processId": 17105,
-            "exited": false
-        },
-        {
-            "deviceId": "RF8MC00W2RV",
-            "name": "com.cheapbeer.pubfight",
-            "processId": 17884,
+            "processId": 4555,
             "exited": false
         }
     ],
