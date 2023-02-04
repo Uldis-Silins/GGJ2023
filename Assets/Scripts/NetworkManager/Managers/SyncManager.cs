@@ -13,8 +13,8 @@ public enum NetworkGameMode
 
 public enum PlayerType
 {
-    UNITY,
-    BRIGHTSIGN
+    FIGHTER,
+    OBSERVER
 }
 
 
@@ -67,19 +67,6 @@ public class SyncManager : MonoBehaviour
     private List<RemotePlayerStete> remotePlayerStetes;
 
     void Start()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else if (instance == this)
-        {
-            Destroy(gameObject);
-        }
-        DontDestroyOnLoad(gameObject);
-        InitializeManager();
-    }
-    private void InitializeManager()
     {
         remotePlayerStetes = new List<RemotePlayerStete>();
         localIpAdress = localNetworkLookup.localIP;

@@ -81,6 +81,8 @@ public class LocalNetworkLookup : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField]
     private TMP_Text outputTextUn;
+    [SerializeField]
+    private NetworkSyncManager networkSyncManager;
     public List<PlayerClient> clientsBR;
     public List<PlayerClient> clientsUN;
     public UnityEvent<string> onWentOffline;
@@ -92,6 +94,8 @@ public class LocalNetworkLookup : MonoBehaviour
     public UnityEvent onReady;
     private IEnumerator networkUpdater;
     private bool isStarted = false;
+
+
     IEnumerator UpdateNetwork()
     {
         while (true)
@@ -192,7 +196,7 @@ public class LocalNetworkLookup : MonoBehaviour
     {
         if (message.Contains("WHO"))
         {
-            NetworkSyncManager.instance.SendUdpMessage("res UNITY" + localIP, message.Substring(message.LastIndexOf('O') + 1), localPort);
+            networkSyncManager.SendUdpMessage("res UNITY" + localIP, message.Substring(message.LastIndexOf('O') + 1), localPort);
         }
     }
     public void BroadcastMessageToEveryone(string message, int port)
@@ -207,7 +211,7 @@ public class LocalNetworkLookup : MonoBehaviour
             string finalClientIpToCheck = subNetStrNormalized + i;
             if (!finalClientIpToCheck.Equals(localIP))
             {
-                NetworkSyncManager.instance.SendUdpMessage(message, finalClientIpToCheck, port);
+                networkSyncManager.SendUdpMessage(message, finalClientIpToCheck, port);
             }
         }
     }
