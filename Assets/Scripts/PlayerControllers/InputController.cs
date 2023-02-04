@@ -9,6 +9,7 @@ public class InputController : MonoBehaviour
 {
     [System.Serializable] public class ResultReceivedEvent : UnityEvent<string> { }
 
+    [Space(20)]
     public ResultReceivedEvent onResultReceived;
 
     [SerializeField] private SpeechRecognizerListener m_speechListener;
@@ -48,13 +49,14 @@ public class InputController : MonoBehaviour
     public void OnFinalResult(string result)
     {
         Debug.Log(result);
-        onResultReceived.Invoke(result);
+        onResultReceived.Invoke(result.ToLower());
         m_startRecordingButton.enabled = true;
     }
 
     public void OnPartialResult(string result)
     {
         onResultReceived.Invoke("Partial: " + result);
+        onResultReceived.Invoke(result.ToLower());
         Debug.Log("Partial: " + result);
     }
 

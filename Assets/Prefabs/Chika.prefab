@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8661050542190441146}
-  - component: {fileID: 1228578950623438658}
   m_Layer: 0
   m_Name: Chika
   m_TagString: Untagged
@@ -31,20 +30,8 @@ Transform:
   m_Children:
   - {fileID: 8182659987853250572}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1228578950623438658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7860086515932856834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c908ad547c359417cad499342f6b5a2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8503953447278016487
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -100,6 +87,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c403dc2b83918df44b24ab55dd0c7109, type: 3}
       propertyPath: m_Name
       value: CHIKA
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: c403dc2b83918df44b24ab55dd0c7109, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0f542cfeb1fca4d238304fe21b8faad1, type: 2}
+    - target: {fileID: 5866666021909216657, guid: c403dc2b83918df44b24ab55dd0c7109, type: 3}
+      propertyPath: m_WarningMessage
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
