@@ -46,14 +46,17 @@ public class GameController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.A))
             {
                 m_spawnedPlayer.ExecuteCommand("brunch");
+                if(Random.value > 0.5f) m_spawnedEnemy.ExecuteCommand(CommandSynonyms.ActionType.Defence); else m_spawnedEnemy.SetHit();
             }
             else if(Input.GetKeyDown(KeyCode.S))
             {
                 m_spawnedPlayer.ExecuteCommand("block");
+                m_spawnedEnemy.ExecuteCommand(CommandSynonyms.ActionType.Attack);
             }
             else if(Input.GetKeyDown(KeyCode.D))
             {
                 m_spawnedPlayer.SetHit();
+                m_spawnedEnemy.ExecuteCommand(CommandSynonyms.ActionType.Attack);
             }
         }
     }

@@ -6,7 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     [HideInInspector] public Transform playerTransform;
 
-    [SerializeField] private GameObject[] m_playerModels;
+    [SerializeField] private PlayerModels m_playerModels;
 
     [SerializeField] private Animator m_animator;
 
@@ -36,14 +36,10 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        SpawnModel(Random.Range(0, m_playerModels.Length));
-    }
-
     public void SpawnModel(int index)
     {
-        m_animator = Instantiate<GameObject>(m_playerModels[index], transform).GetComponentInChildren<Animator>();
+        m_animator = Instantiate<GameObject>(m_playerModels.models[index].playerObject, transform).GetComponentInChildren<Animator>();
+        m_animator.transform.eulerAngles = m_playerModels.models[index].eulerOffset;
     }
 
     public void SetHit()

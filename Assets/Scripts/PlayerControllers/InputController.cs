@@ -49,6 +49,8 @@ public class InputController : MonoBehaviour
     public void OnFinalResult(string result)
     {
         Debug.Log(result);
+        string[] split = result.Split(" ");
+        result = split[0];
         onResultReceived.Invoke(result.ToLower());
         m_startRecordingButton.enabled = true;
     }
@@ -56,6 +58,8 @@ public class InputController : MonoBehaviour
     public void OnPartialResult(string result)
     {
         onResultReceived.Invoke("Partial: " + result);
+        string[] split = result.Split(" ");
+        result = split[0];
         onResultReceived.Invoke(result.ToLower());
         Debug.Log("Partial: " + result);
     }

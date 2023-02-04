@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
 {
 	[SerializeField] private CommandSynonyms m_commandData;
 
-	[SerializeField] private GameObject[] m_playerModels;
+	[SerializeField] private PlayerModels m_playerModels;
 	[SerializeField] private Transform m_enemyPositionTransform;
 
 	[SerializeField] private Animator m_animator;
@@ -22,7 +22,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if(m_inDefence)
+        Quaternion lookRotation = Quaternion.LookRotation(m_enemyPositionTransform.position - transform.position);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 20f * Time.deltaTime);
+
+        if (m_inDefence)
 		{
 			if (m_defenceAnimationTimer <= 0f)
 			{
@@ -36,7 +39,8 @@ public class PlayerController : MonoBehaviour
 
 	public void SpawnModel(int index)
 	{
-		m_animator = Instantiate<GameObject>(m_playerModels[index], transform).GetComponentInChildren<Animator>();
+		m_animator = Instantiate<GameObject>(m_playerModels.models[index].playerObject, transform).GetComponentInChildren<Animator>();
+		m_animator.transform.eulerAngles = m_playerModels.models[index].eulerOffset;
 	}
 
 	public void SetHit()
