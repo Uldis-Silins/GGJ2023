@@ -46,9 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_commandData: {fileID: 11400000, guid: 41c94561114754caeb85e37b623b9730, type: 2}
-  m_playerModels:
-  - {fileID: 7860086515932856834, guid: 952c5dddb7b4748b4839a7c6913e2857, type: 3}
-  - {fileID: 680234825390730952, guid: 276978a69ae2e459fa1e8cbf34433a4b, type: 3}
+  m_playerModels: {fileID: 11400000, guid: e6169fe37496548118e21e90c8a0f45b, type: 2}
   m_enemyPositionTransform: {fileID: 7824880120919602740}
   m_animator: {fileID: 0}
 --- !u!1 &3681819097835429842
