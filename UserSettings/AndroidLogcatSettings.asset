@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "RF8MC00W2RV",
         "name": "com.cheapbeer.pubfight",
-        "processId": 26053,
+        "processId": 26831,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -120,6 +120,12 @@
             "deviceId": "RF8MC00W2RV",
             "name": "com.cheapbeer.pubfight",
             "processId": 26053,
+            "exited": false
+        },
+        {
+            "deviceId": "RF8MC00W2RV",
+            "name": "com.cheapbeer.pubfight",
+            "processId": 26831,
             "exited": false
         }
     ],
