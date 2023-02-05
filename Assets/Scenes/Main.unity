@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18018606, g: 0.22559257, b: 0.30678663, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1179,6 +1179,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6802901937123379847, guid: f3158b4881d6d054bba64fef337d5adc, type: 3}
+      propertyPath: onReady.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802901937123379847, guid: f3158b4881d6d054bba64fef337d5adc, type: 3}
+      propertyPath: onReady.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802901937123379847, guid: f3158b4881d6d054bba64fef337d5adc, type: 3}
+      propertyPath: onReady.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 782628376}
+    - target: {fileID: 6802901937123379847, guid: f3158b4881d6d054bba64fef337d5adc, type: 3}
+      propertyPath: onReady.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802901937123379847, guid: f3158b4881d6d054bba64fef337d5adc, type: 3}
+      propertyPath: onReady.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnRecieveNetworkReady
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802901937123379847, guid: f3158b4881d6d054bba64fef337d5adc, type: 3}
+      propertyPath: onReady.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: HighConnectLayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802901937123379847, guid: f3158b4881d6d054bba64fef337d5adc, type: 3}
+      propertyPath: onReady.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088028500236882581, guid: f3158b4881d6d054bba64fef337d5adc, type: 3}
+      propertyPath: highConnectLayer
+      value: 
+      objectReference: {fileID: 782628376}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

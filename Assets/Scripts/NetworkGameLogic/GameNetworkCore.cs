@@ -52,6 +52,8 @@ public class GameNetworkCore : MonoBehaviour
     private NetworkSyncManager networkSyncManager;
     [SerializeField]
     private LocalNetworkLookup networkLookup;
+    [SerializeField]
+    private HighConnectLayer highConnectLayer;
 
     [SerializeField]
     private TMPro.TextMeshProUGUI usedRoles;
@@ -91,6 +93,27 @@ public class GameNetworkCore : MonoBehaviour
         }
     }
     //
+    private void CheckNetWorkReady()
+    {
+        bool isChikaHere = false;
+        bool isGopstopHere = false;
+        for (int i=0; i<players.Count; i++)
+        {
+            if(players[i].mode== PlayerCharacterMode.CHIKA)
+            {
+                isChikaHere = true;
+            }
+            if (players[i].mode== PlayerCharacterMode.GOPSTOP)
+            {
+                isGopstopHere=true;
+            }
+        }
+        if (isChikaHere && isGopstopHere)
+        {
+            highConnectLayer.OnGameReady();
+        }
+    }
+    //
     private void LockRoles(bool isLocked)
     {
         //needs to be implemented
@@ -126,7 +149,7 @@ public class GameNetworkCore : MonoBehaviour
                 Debug.Log("++++");
                 networkSyncManager.BroadcastUdpMessage("ttr " + (char)expectedMode + networkLookup.localIP, networkLookup.clientsUN.Select(item => item.ipAddress).ToList(), networkLookup.localPort);
                 players.Add(new PlayerCharacter(networkLookup.localIP, expectedMode));
-
+                CheckNetWorkReady();
                 if (myRole)
                 {
                     switch (expectedMode)
@@ -200,6 +223,7 @@ public class GameNetworkCore : MonoBehaviour
         PlayerCharacterMode remoteRole = PlayerCharacter.ConvertStringToPlayerCharacterMode(fromMsg[0]);
         string remoteIp = fromMsg.Substring(fromMsg.LastIndexOf(remoteRole.ToString()) + 2);
         players.Add(new PlayerCharacter(remoteIp, remoteRole));
+        CheckNetWorkReady();
         LockRoles(false);//unlock ROLES go from lobby to game
         //GLOBAL EVENTO
         if (usedRoles)
