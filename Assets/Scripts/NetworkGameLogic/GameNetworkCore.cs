@@ -127,23 +127,26 @@ public class GameNetworkCore : MonoBehaviour
                 networkSyncManager.BroadcastUdpMessage("ttr " + (char)expectedMode + networkLookup.localIP, networkLookup.clientsUN.Select(item => item.ipAddress).ToList(), networkLookup.localPort);
                 players.Add(new PlayerCharacter(networkLookup.localIP, expectedMode));
 
-                switch (expectedMode)
+                if (myRole)
                 {
-                    case PlayerCharacterMode.GOPSTOP:
-                        {
-                          myRole.text += "GOPSTOP ";
-                        }
-                        break;
-                    case PlayerCharacterMode.CHIKA:
-                        {
-                           myRole.text += "CHIKA ";
-                        }
-                        break;
-                    case PlayerCharacterMode.LOOKYLOOS:
-                        {
-                            myRole.text += "LOOKYLOOS ";
-                        }
-                        break;
+                    switch (expectedMode)
+                    {
+                        case PlayerCharacterMode.GOPSTOP:
+                            {
+                                myRole.text += "GOPSTOP ";
+                            }
+                            break;
+                        case PlayerCharacterMode.CHIKA:
+                            {
+                                myRole.text += "CHIKA ";
+                            }
+                            break;
+                        case PlayerCharacterMode.LOOKYLOOS:
+                            {
+                                myRole.text += "LOOKYLOOS ";
+                            }
+                            break;
+                    }
                 }
                 //SO succes EVENT + answer to all
             }
@@ -199,23 +202,26 @@ public class GameNetworkCore : MonoBehaviour
         players.Add(new PlayerCharacter(remoteIp, remoteRole));
         LockRoles(false);//unlock ROLES go from lobby to game
         //GLOBAL EVENTO
-        switch (remoteRole)
+        if (usedRoles)
         {
-            case PlayerCharacterMode.GOPSTOP:
-                {
-                    usedRoles.text += "GOPSTOP ";
-                }
-                break;
-            case PlayerCharacterMode.CHIKA:
-                {
-                    usedRoles.text += "CHIKA ";
-                }
-                break;
-            case PlayerCharacterMode.LOOKYLOOS:
-                {
-                    usedRoles.text += "LOOKYLOOS ";
-                }
-                break;
+            switch (remoteRole)
+            {
+                case PlayerCharacterMode.GOPSTOP:
+                    {
+                        usedRoles.text += "GOPSTOP ";
+                    }
+                    break;
+                case PlayerCharacterMode.CHIKA:
+                    {
+                        usedRoles.text += "CHIKA ";
+                    }
+                    break;
+                case PlayerCharacterMode.LOOKYLOOS:
+                    {
+                        usedRoles.text += "LOOKYLOOS ";
+                    }
+                    break;
+            }
         }
     }
     public void BookOthersRoleFail(string fromMsg)
