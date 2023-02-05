@@ -55,7 +55,8 @@ public class NetworkSyncManager : MonoBehaviour
                 byte[] data = receiver.Receive(ref remoteIp);
                 string recevedText = Encoding.ASCII.GetString(data);
                 mainThreadQueuedCallbacks += () => {
-                    onUdpMessageRecived?.Invoke(recevedText);
+                        onUdpMessageRecived?.Invoke(recevedText);
+                   
                 };
             }
             Debug.Log("Closing listener");
@@ -89,7 +90,7 @@ public class NetworkSyncManager : MonoBehaviour
         {
             eventsClone = mainThreadQueuedCallbacks;
             mainThreadQueuedCallbacks = null;
-            eventsClone.Invoke();
+            eventsClone?.Invoke();
             eventsClone = null;
         }
     }

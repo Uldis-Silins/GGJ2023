@@ -3296,6 +3296,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6802901937123379844, guid: f3158b4881d6d054bba64fef337d5adc, type: 3}
+      propertyPath: elements.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802901937123379844, guid: f3158b4881d6d054bba64fef337d5adc, type: 3}
+      propertyPath: elements.Array.data[12].command
+      value: blj
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802901937123379844, guid: f3158b4881d6d054bba64fef337d5adc, type: 3}
+      propertyPath: elements.Array.data[12].Action.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802901937123379844, guid: f3158b4881d6d054bba64fef337d5adc, type: 3}
+      propertyPath: elements.Array.data[12].Action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 239716600}
+    - target: {fileID: 6802901937123379844, guid: f3158b4881d6d054bba64fef337d5adc, type: 3}
+      propertyPath: elements.Array.data[12].Action.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802901937123379844, guid: f3158b4881d6d054bba64fef337d5adc, type: 3}
+      propertyPath: elements.Array.data[12].Action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReciveBlockOff
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802901937123379844, guid: f3158b4881d6d054bba64fef337d5adc, type: 3}
+      propertyPath: elements.Array.data[12].Action.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameActions, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802901937123379844, guid: f3158b4881d6d054bba64fef337d5adc, type: 3}
+      propertyPath: elements.Array.data[12].Action.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6802901937123379847, guid: f3158b4881d6d054bba64fef337d5adc, type: 3}
       propertyPath: outputTextUn
       value: 
