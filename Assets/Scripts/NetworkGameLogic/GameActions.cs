@@ -94,11 +94,11 @@ public class GameActions : MonoBehaviour
           PlayerCharacter playerCharacter = gameNetworkCore.GetPlayerByIp(actionFrom.Substring(actionFrom.LastIndexOf('O') + 2));
             playerCharacter.beerCount = byte.Parse(actionFrom[actionFrom.LastIndexOf('O') + 1].ToString());
             highConnectLayer.OnRecieveHit(playerCharacter.mode);
-            if (playerCharacter.mode == PlayerCharacterMode.CHIKA)
+            if (playerCharacter.mode == PlayerCharacterMode.CHIKA && chikaStatusText)
             {
                 chikaStatusText.text = "HP " + playerCharacter.beerCount + "Injured by: HIT";
             }
-            else if(playerCharacter.mode == PlayerCharacterMode.GOPSTOP)
+            else if(playerCharacter.mode == PlayerCharacterMode.GOPSTOP && gopstopStatusText)
             {
                 gopstopStatusText.text = "HP " + playerCharacter.beerCount + "Injured by: HIT";
             }
@@ -122,11 +122,11 @@ public class GameActions : MonoBehaviour
             //  opponentStatusText.text = "Opponent got PUNCH!";
             PlayerCharacter playerCharacter = gameNetworkCore.GetPlayerByIp(actionFrom.Substring(actionFrom.LastIndexOf('O') + 2));
             playerCharacter.beerCount = byte.Parse(actionFrom[actionFrom.LastIndexOf('O') + 1].ToString());
-            if (playerCharacter.mode == PlayerCharacterMode.CHIKA)
+            if (playerCharacter.mode == PlayerCharacterMode.CHIKA && chikaStatusText)
             {
                 chikaStatusText.text = "HP " + playerCharacter.beerCount + "Injured by: PUNCH";
             }
-            else if (playerCharacter.mode == PlayerCharacterMode.GOPSTOP)
+            else if (playerCharacter.mode == PlayerCharacterMode.GOPSTOP && gopstopStatusText)
             {
                 gopstopStatusText.text = "HP " + playerCharacter.beerCount + "Injured by: PUNCH";
             }
@@ -148,11 +148,11 @@ public class GameActions : MonoBehaviour
         {
             PlayerCharacter playerCharacter = gameNetworkCore.GetPlayerByIp(actionFrom.Substring(actionFrom.LastIndexOf('O') + 2));
             playerCharacter.beerCount = byte.Parse(actionFrom[actionFrom.LastIndexOf('O') + 1].ToString());
-            if (playerCharacter.mode == PlayerCharacterMode.CHIKA)
+            if (playerCharacter.mode == PlayerCharacterMode.CHIKA && chikaStatusText)
             {
                 chikaStatusText.text = "HP " + playerCharacter.beerCount + "Injured by: BLOCK?!";
             }
-            else if (playerCharacter.mode == PlayerCharacterMode.GOPSTOP)
+            else if (playerCharacter.mode == PlayerCharacterMode.GOPSTOP && gopstopStatusText)
             {
                 gopstopStatusText.text = "HP " + playerCharacter.beerCount + "Injured by: BLOCK?!";
             }

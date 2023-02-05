@@ -53,10 +53,10 @@ public class GameNetworkCore : MonoBehaviour
     [SerializeField]
     private LocalNetworkLookup networkLookup;
 
-    [SerializeField]
+    /*[SerializeField]
     private TMPro.TextMeshProUGUI usedRoles;
     [SerializeField]
-    private TMPro.TextMeshProUGUI myRole;
+    private TMPro.TextMeshProUGUI myRole;*/
 
     private PlayerCharacterMode expectedMode = PlayerCharacterMode.UNKNOWN;
     public int responseCount = 0;
@@ -131,17 +131,17 @@ public class GameNetworkCore : MonoBehaviour
                 {
                     case PlayerCharacterMode.GOPSTOP:
                         {
-                            myRole.text += "GOPSTOP ";
+                       //     myRole.text += "GOPSTOP ";
                         }
                         break;
                     case PlayerCharacterMode.CHIKA:
                         {
-                            myRole.text += "CHIKA ";
+                         //   myRole.text += "CHIKA ";
                         }
                         break;
                     case PlayerCharacterMode.LOOKYLOOS:
                         {
-                            myRole.text += "LOOKYLOOS ";
+                         //   myRole.text += "LOOKYLOOS ";
                         }
                         break;
                 }
@@ -203,17 +203,17 @@ public class GameNetworkCore : MonoBehaviour
         {
             case PlayerCharacterMode.GOPSTOP:
                 {
-                    usedRoles.text += "GOPSTOP ";
+                   // usedRoles.text += "GOPSTOP ";
                 }
                 break;
             case PlayerCharacterMode.CHIKA:
                 {
-                    usedRoles.text += "CHIKA ";
+                //    usedRoles.text += "CHIKA ";
                 }
                 break;
             case PlayerCharacterMode.LOOKYLOOS:
                 {
-                    usedRoles.text += "LOOKYLOOS ";
+                  //  usedRoles.text += "LOOKYLOOS ";
                 }
                 break;
         }
