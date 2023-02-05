@@ -540,8 +540,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 8b34d685fa3014548a435cf4e5f16ed1, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1922,6 +1922,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53481c47f181b4ddd93704bd50552e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gopButton: {fileID: 405143940}
+  chikButton: {fileID: 1991382422}
   m_arPlaneManager: {fileID: 221191053}
   m_playerPrefab: {fileID: 5746402507004538725, guid: e97303631f3724886911fdc6e26be0a7, type: 3}
   m_enemyPrefab: {fileID: 1203246124406022539, guid: 048704272133447938a4931dc4ed0ba2, type: 3}
@@ -2058,8 +2060,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: b2b7150d481954f658bcf3c85b32630b, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
