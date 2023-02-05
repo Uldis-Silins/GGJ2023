@@ -30,7 +30,7 @@ public class AudioDetection : MonoBehaviour
 
     public void GetSpectrum()
     {
-        micSource.GetSpectrumData(m_samples, 0, FFTWindow.Blackman)
+        micSource.GetSpectrumData(m_samples, 0, FFTWindow.Blackman);
     }
 
     public float GetLoudness(AudioClip clip, int position)
