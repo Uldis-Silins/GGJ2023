@@ -7,8 +7,7 @@ public class HighConnectLayer : MonoBehaviour
 {
     [SerializeField]
     private GameActions gameActions;
-    [SerializeField]
-    private UnityAction<int> onRecievedAttack;
+    public UnityAction<int> onRecievedAttack;
 
 
     public void SetPlayer(int playerTypeId)
