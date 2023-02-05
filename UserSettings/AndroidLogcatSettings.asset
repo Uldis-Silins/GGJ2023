@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "5a34db9e",
+    "m_SelectedDeviceId": "RF8MC00W2RV",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "RF8MC00W2RV",
+        "name": "com.cheapbeer.pubfight",
+        "processId": 7498,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -31,6 +31,18 @@
             "name": "com.cheapbeer.pubfight",
             "processId": 2435,
             "exited": true
+        },
+        {
+            "deviceId": "RF8MC00W2RV",
+            "name": "com.cheapbeer.pubfight",
+            "processId": 6561,
+            "exited": false
+        },
+        {
+            "deviceId": "RF8MC00W2RV",
+            "name": "com.cheapbeer.pubfight",
+            "processId": 7498,
+            "exited": false
         },
         {
             "deviceId": "5a34db9e",

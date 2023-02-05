@@ -18,6 +18,11 @@ public class UI_ComicStripController : MonoBehaviour
     private int m_targetWaypointIndex, m_currentWaypointIndex;
     private float m_waypointTimer;
 
+    private void Start()
+    {
+        
+    }
+
     private void Update()
     {
         if (m_waypointTimer >= m_waypoints[m_currentWaypointIndex].time)
@@ -25,7 +30,7 @@ public class UI_ComicStripController : MonoBehaviour
             SetNextWapoint();
         }
 
-        m_comicStripTransform.position = Vector3.Lerp(m_waypoints[m_currentWaypointIndex].position, m_waypoints[m_targetWaypointIndex].position, m_waypoints[m_currentWaypointIndex].curve.Evaluate(m_waypointTimer / m_waypoints[m_currentWaypointIndex].time));
+        m_comicStripTransform.anchoredPosition = Vector3.Lerp(m_waypoints[m_currentWaypointIndex].position, m_waypoints[m_targetWaypointIndex].position, m_waypoints[m_currentWaypointIndex].curve.Evaluate(m_waypointTimer / m_waypoints[m_currentWaypointIndex].time));
 
         m_waypointTimer += Time.deltaTime;
     }
