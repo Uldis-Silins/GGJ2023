@@ -122,6 +122,7 @@ public class GameActions : MonoBehaviour
             //  opponentStatusText.text = "Opponent got PUNCH!";
             PlayerCharacter playerCharacter = gameNetworkCore.GetPlayerByIp(actionFrom.Substring(actionFrom.LastIndexOf('O') + 2));
             playerCharacter.beerCount = byte.Parse(actionFrom[actionFrom.LastIndexOf('O') + 1].ToString());
+            highConnectLayer.OnRecievePunch(playerCharacter.mode);
             if (playerCharacter.mode == PlayerCharacterMode.CHIKA && chikaStatusText)
             {
                 chikaStatusText.text = "HP " + playerCharacter.beerCount + "Injured by: PUNCH";
@@ -148,6 +149,7 @@ public class GameActions : MonoBehaviour
         {
             PlayerCharacter playerCharacter = gameNetworkCore.GetPlayerByIp(actionFrom.Substring(actionFrom.LastIndexOf('O') + 2));
             playerCharacter.beerCount = byte.Parse(actionFrom[actionFrom.LastIndexOf('O') + 1].ToString());
+            highConnectLayer.OnRecieveBlock(playerCharacter.mode);
             if (playerCharacter.mode == PlayerCharacterMode.CHIKA && chikaStatusText)
             {
                 chikaStatusText.text = "HP " + playerCharacter.beerCount + "Injured by: BLOCK?!";

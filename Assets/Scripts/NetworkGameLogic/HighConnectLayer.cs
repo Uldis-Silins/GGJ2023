@@ -8,6 +8,7 @@ public class HighConnectLayer : MonoBehaviour
     [SerializeField]
     private GameActions gameActions;
     public UnityAction<int> onRecievedAttack;
+    public UnityAction<int> onRecievedBlock;
 
 
     public void SetPlayer(int playerTypeId)
@@ -25,14 +26,51 @@ public class HighConnectLayer : MonoBehaviour
             gameActions.TryRegisterAsLookyloos();
         }
     }
-
+    
     public void SentRemoteAttack()
     {
         gameActions.SentMyHit();
     }
+    public void SentRemotePunch()
+    {
+        gameActions.SentMyPunch();
+    }
+    public void SentRemoteBlock()
+    {
+        gameActions.SentMyBlock();
+    }
 
     public void OnRecieveHit(PlayerCharacterMode playerCharacterMode)
     {
-        onRecievedAttack?.Invoke((int)playerCharacterMode);
+        if (playerCharacterMode == PlayerCharacterMode.GOPSTOP)
+        {
+            onRecievedAttack?.Invoke(0);
+        }
+        else if (playerCharacterMode == PlayerCharacterMode.CHIKA)
+        {
+            onRecievedAttack?.Invoke(1);
+        }
+    }
+    public void OnRecievePunch(PlayerCharacterMode playerCharacterMode)
+    {
+        if (playerCharacterMode == PlayerCharacterMode.GOPSTOP)
+        {
+            onRecievedAttack?.Invoke(0);
+        }
+        else if (playerCharacterMode == PlayerCharacterMode.CHIKA)
+        {
+            onRecievedAttack?.Invoke(1);
+        }
+    }
+    public void OnRecieveBlock(PlayerCharacterMode playerCharacterMode)
+    {
+        if (playerCharacterMode == PlayerCharacterMode.GOPSTOP)
+        {
+            onRecievedAttack?.Invoke(1);
+        }
+        else if (playerCharacterMode == PlayerCharacterMode.CHIKA)
+        {
+            onRecievedAttack?.Invoke(0);
+        }
     }
 }
