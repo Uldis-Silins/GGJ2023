@@ -1,53 +1,41 @@
 {
-    "m_SelectedDeviceId": "RF8MC00W2RV",
+    "m_SelectedDeviceId": "5a34db9e",
     "m_SelectedPackage": {
-        "deviceId": "RF8MC00W2RV",
-        "name": "com.cheapbeer.pubfight",
-        "processId": 26026,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "RF8MC00W2RV",
-            "name": "com.sec.android.app.launcher",
-            "processId": 2440,
-            "exited": false
-        },
-        {
-            "deviceId": "RF8MC00W2RV",
-            "name": "com.cheapbeer.pubfight",
-            "processId": 16134,
-            "exited": true
-        },
-        {
-            "deviceId": "RF8MC00W2RV",
-            "name": "com.cheapbeer.pubfight",
-            "processId": 19539,
-            "exited": true
-        },
-        {
-            "deviceId": "RF8MC00W2RV",
-            "name": "com.cheapbeer.pubfight",
-            "processId": 23384,
-            "exited": true
-        },
-        {
-            "deviceId": "RF8MC00W2RV",
-            "name": "com.cheapbeer.pubfight",
-            "processId": 24521,
-            "exited": true
-        },
-        {
-            "deviceId": "RF8MC00W2RV",
-            "name": "com.cheapbeer.pubfight",
-            "processId": 24918,
-            "exited": false
-        },
-        {
-            "deviceId": "RF8MC00W2RV",
             "name": "com.cheapbeer.pubfight",
             "processId": 26026,
+            "exited": true
+        },
+        {
+            "deviceId": "RF8MC00W2RV",
+            "name": "com.cheapbeer.pubfight",
+            "processId": 27133,
+            "exited": true
+        },
+        {
+            "deviceId": "RF8MC00W2RV",
+            "name": "com.cheapbeer.pubfight",
+            "processId": 1178,
+            "exited": true
+        },
+        {
+            "deviceId": "RF8MC00W2RV",
+            "name": "com.cheapbeer.pubfight",
+            "processId": 2435,
+            "exited": true
+        },
+        {
+            "deviceId": "5a34db9e",
+            "name": "com.cheapbeer.pubfight",
+            "processId": 2648,
             "exited": false
         }
     ],
