@@ -22,17 +22,25 @@ public class GameController : MonoBehaviour
 
     private Vector3 m_spawnPosition;
     private bool m_canSpawn;
+    private bool m_netReady;
+    private bool m_inGame;
 
     private void OnEnable()
     {
         m_arPlaneManager.planesChanged += HandlePlanesChanged;
         m_connectLayer.onRecievedAttack += ReceiveRemoteAttack;
+        m_connectLayer.onRecievedBlock += ReceiveRemoteBlock;
+        m_connectLayer.onNetworkReady += ReceiveNetworkReady;
+        m_connectLayer.onGameReady += ReceiveGameStart;
     }
 
     private void OnDisable()
     {
         m_arPlaneManager.planesChanged -= HandlePlanesChanged;
         m_connectLayer.onRecievedAttack -= ReceiveRemoteAttack;
+        m_connectLayer.onRecievedBlock -= ReceiveRemoteBlock;
+        m_connectLayer.onNetworkReady -= ReceiveNetworkReady;
+        m_connectLayer.onGameReady -= ReceiveGameStart;
     }
 
     private void Start()
@@ -42,9 +50,15 @@ public class GameController : MonoBehaviour
         chikButton.gameObject.SetActive(false);
     }
 
-#if UNITY_EDITOR
     private void Update()
     {
+        if(m_canSpawn && m_netReady)
+        {
+            gopButton.gameObject.SetActive(true);
+            chikButton.gameObject.SetActive(true);
+            m_netReady = false;
+        }
+
         if(Input.GetKeyDown(KeyCode.Space))
         {
             m_spawnedPlayer = Instantiate<PlayerController>(m_playerPrefab, Vector3.zero, Quaternion.identity);
@@ -74,7 +88,6 @@ public class GameController : MonoBehaviour
             }
         }
     }
-#endif
 
     public void OnConnectClick(int playerId)
     {
@@ -107,8 +120,6 @@ public class GameController : MonoBehaviour
                 m_spawnPosition = plane.center;
                 m_canSpawn = true;
                 removeListener = true;
-                gopButton.gameObject.SetActive(true);
-                chikButton.gameObject.SetActive(true);
             }
         }
 
@@ -120,7 +131,7 @@ public class GameController : MonoBehaviour
 
     private void HandleCommandInput(string command)
     {
-        if(m_spawnedPlayer != null)
+        if(m_spawnedPlayer != null && m_inGame)
         {
             m_spawnedPlayer.ExecuteCommand(command);
         }
@@ -132,5 +143,23 @@ public class GameController : MonoBehaviour
         {
             m_spawnedEnemy.ExecuteCommand(CommandSynonyms.ActionType.Attack);
         }
+    }
+
+    public void ReceiveRemoteBlock(int playerId)
+    {
+        if (playerId != m_myPlayerId)
+        {
+            m_spawnedEnemy.ExecuteCommand(CommandSynonyms.ActionType.Defence);
+        }
+    }
+
+    private void ReceiveNetworkReady()
+    {
+        m_netReady = true;
+    }
+
+    private void ReceiveGameStart()
+    {
+        m_inGame = true;
     }
 }

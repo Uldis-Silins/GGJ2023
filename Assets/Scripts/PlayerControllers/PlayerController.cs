@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
 				m_animator.SetBool(m_blockDefenceAnimationHash, true);
 				m_defenceAnimationTimer = 1.5f;
 				m_inDefence = true;
+				m_connectLayer.SentRemoteBlock();
 				break;
 			default:
 				break;
