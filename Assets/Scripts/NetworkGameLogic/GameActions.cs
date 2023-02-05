@@ -14,6 +14,8 @@ public class GameActions : MonoBehaviour
     private TMPro.TextMeshProUGUI gopstopStatusText;
     [SerializeField]
     private TMPro.TextMeshProUGUI chikaStatusText;
+    [SerializeField]
+    private HighConnectLayer highConnectLayer;
     //SENDING
     //reg role
     public void TryRegisterAsGopstop()
@@ -91,6 +93,7 @@ public class GameActions : MonoBehaviour
           //  Debug.Log(actionFrom[actionFrom.LastIndexOf('O') + 1]);
           PlayerCharacter playerCharacter = gameNetworkCore.GetPlayerByIp(actionFrom.Substring(actionFrom.LastIndexOf('O') + 2));
             playerCharacter.beerCount = byte.Parse(actionFrom[actionFrom.LastIndexOf('O') + 1].ToString());
+            highConnectLayer.OnRecieveHit(playerCharacter.mode);
             if (playerCharacter.mode == PlayerCharacterMode.CHIKA)
             {
                 chikaStatusText.text = "HP " + playerCharacter.beerCount + "Injured by: HIT";
@@ -106,7 +109,7 @@ public class GameActions : MonoBehaviour
             //myStatusText.text = "I got HIT";
             //opponentStatusText.text = "ATTACKING";
             PlayerCharacter player = gameNetworkCore.GetMyPlayer();
-            player.beerCount--;
+          //  player.beerCount--;
             BroadcastOponentHit(player);
         }
     }
@@ -133,7 +136,7 @@ public class GameActions : MonoBehaviour
             //myStatusText.text = "I got PUNCH";
             //opponentStatusText.text = "ATTACKING";
             PlayerCharacter player = gameNetworkCore.GetMyPlayer();
-            player.beerCount--;
+        //    player.beerCount--;
             BroadcastOponentPunch(player);
         }
     }
