@@ -28,6 +28,7 @@ public class UI_Controller : MonoBehaviour
     [SerializeField] private StateObjects[] m_stateObjects;
     [SerializeField] private UI_PlayerHealth m_playerHealth, m_opponentHealth;
     [SerializeField] private HealthData m_healthData;
+    [SerializeField] private UI_ComicStripController m_comicStripController;
 
     private Dictionary<StateType, StateHandler> m_stateHandlers;
 
@@ -39,6 +40,7 @@ public class UI_Controller : MonoBehaviour
         m_stateHandlers = new Dictionary<StateType, StateHandler>();
         m_stateHandlers.Add(StateType.None, null);
         m_stateHandlers.Add(StateType.Fight, EnterState_Fight);
+        m_stateHandlers.Add(StateType.Comic, EnterState_Comic);
 
         m_currentState = new StateHandler(EnterState_Fight);
         ToggleState(StateType.Fight, true);
@@ -81,6 +83,8 @@ public class UI_Controller : MonoBehaviour
     private void EnterState_Fight()
     {
         CurrentState = StateType.Fight;
+
+        m_currentState = State_Fight;
     }
 
     private void State_Fight()
@@ -92,6 +96,29 @@ public class UI_Controller : MonoBehaviour
     }
 
     private void ExitState_Fight(StateHandler targetState)
+    {
+        ToggleState(CurrentState, false);
+        m_currentState = targetState;
+    }
+
+    private void EnterState_Comic()
+    {
+        CurrentState = StateType.Comic;
+        m_comicStripController.gameObject.SetActive(true);
+        m_currentState = State_Comic;
+    }
+
+    private void State_Comic()
+    {
+        if (!m_comicStripController.IsPlaying) ChangeState(StateType.Fight);
+
+        if (CurrentState != StateType.Comic)
+        {
+            ExitState_Comic(m_stateHandlers[CurrentState]);
+        }
+    }
+
+    private void ExitState_Comic(StateHandler targetState)
     {
         ToggleState(CurrentState, false);
         m_currentState = targetState;

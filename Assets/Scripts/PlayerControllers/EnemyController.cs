@@ -20,6 +20,8 @@ public class EnemyController : MonoBehaviour
     private readonly int m_attackIdAnimationHash = Animator.StringToHash("AttackId");
     private readonly int m_defenceIdAnimationHash = Animator.StringToHash("DefenceId");
     private readonly int m_hitIdAnimationHash = Animator.StringToHash("HitId");
+    private readonly int m_gameOverAnimationHash = Animator.StringToHash("Wasted");
+    private readonly int m_winAnimationHash = Animator.StringToHash("Win");
 
     private void Update()
     {
@@ -84,5 +86,15 @@ public class EnemyController : MonoBehaviour
         m_animator.SetBool(m_blockDefenceAnimationHash, true);
         m_defenceAnimationTimer = 1.5f;
         m_inDefence = true;
+    }
+
+    public void GameOver()
+    {
+        m_animator.SetTrigger(m_gameOverAnimationHash);
+    }
+
+    public void Win()
+    {
+        m_animator.SetTrigger(m_winAnimationHash);
     }
 }

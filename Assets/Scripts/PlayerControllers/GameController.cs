@@ -6,8 +6,6 @@ using UnityEngine.XR.ARFoundation;
 
 public class GameController : MonoBehaviour
 {
-    public Button gopButton, chikButton;
-
     [SerializeField] private ARPlaneManager m_arPlaneManager;
     [SerializeField] private PlayerController m_playerPrefab;
     [SerializeField] private EnemyController m_enemyPrefab;
@@ -24,6 +22,10 @@ public class GameController : MonoBehaviour
     private bool m_canSpawn;
     private bool m_netReady;
     private bool m_inGame;
+
+    private int m_playerHealth = 5, m_enemyHealth = 5;
+
+    public bool InGame { get { return m_inGame; } }
 
     private void OnEnable()
     {
@@ -45,47 +47,38 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        Screen.sleepTimeout = 0;
         //m_inputController.onResultReceived.AddListener(HandleCommandInput);
-        gopButton.gameObject.SetActive(false);
-        chikButton.gameObject.SetActive(false);
+        m_uiController.ChangeState(UI_Controller.StateType.Comic);
     }
 
     private void Update()
     {
         if(m_canSpawn && m_netReady)
         {
-            gopButton.gameObject.SetActive(true);
-            chikButton.gameObject.SetActive(true);
             m_netReady = false;
         }
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            m_spawnedPlayer = Instantiate<PlayerController>(m_playerPrefab, Vector3.zero, Quaternion.identity);
-            m_spawnedPlayer.SpawnModel(0);
+            m_spawnPosition = Vector3.zero;
+            m_myPlayerId = 0;
+            //m_connectLayer.SetPlayer(m_myPlayerId);
+            m_spawnedPlayer = Instantiate<PlayerController>(m_playerPrefab, m_spawnPosition, Quaternion.identity);
+            m_spawnedPlayer.SpawnModel(m_myPlayerId);
             //m_spawnedPlayer.ConnectLayer = m_connectLayer;
+            m_uiController.SetPlayerHealthData(m_myPlayerId);
             m_spawnedEnemy = Instantiate<EnemyController>(m_enemyPrefab, m_spawnedPlayer.EnemyPosition, Quaternion.identity);
             m_spawnedEnemy.playerTransform = m_spawnedPlayer.transform;
-            m_spawnedEnemy.SpawnModel(1);
-        }
+            m_spawnedEnemy.SpawnModel(1);    // 0 - gopstop, but model is id 1 and vice versa
+            m_uiController.SetOpponentHealthData(1);
 
-        if(m_spawnedPlayer != null)
-        {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                m_spawnedPlayer.ExecuteCommand("brunch");
-                if(Random.value > 0.5f) m_spawnedEnemy.ExecuteCommand(CommandSynonyms.ActionType.Defence); else m_spawnedEnemy.SetHit(Random.Range(0, 4));
-            }
-            else if(Input.GetKeyDown(KeyCode.S))
-            {
-                m_spawnedPlayer.ExecuteCommand("black");
-                m_spawnedEnemy.ExecuteCommand(CommandSynonyms.ActionType.Attack);
-            }
-            else if(Input.GetKeyDown(KeyCode.D))
-            {
-                m_spawnedPlayer.SetHit(Random.Range(0, 4));
-                m_spawnedEnemy.ExecuteCommand(CommandSynonyms.ActionType.Attack);
-            }
+            m_inGame = true;
+
+            m_uiController.SetPlayerHealth(m_playerHealth);
+            m_uiController.SetOpponentHealth(m_enemyHealth);
+
+            m_canSpawn = false;
         }
     }
 
@@ -115,12 +108,13 @@ public class GameController : MonoBehaviour
                 m_spawnedEnemy = Instantiate<EnemyController>(m_enemyPrefab, m_spawnedPlayer.EnemyPosition, Quaternion.identity);
                 m_spawnedEnemy.playerTransform = m_spawnedPlayer.transform;
                 m_spawnedEnemy.SpawnModel(1);    // 0 - gopstop, but model is id 1 and vice versa
-                m_uiController.SetPlayerHealthData(1);
+                m_uiController.SetOpponentHealthData(1);
 
-                m_uiController.ChangeState(UI_Controller.StateType.Fight);
+                m_inGame = true;
 
-                gopButton.gameObject.SetActive(false);
-                chikButton.gameObject.SetActive(false);
+                m_uiController.SetPlayerHealth(m_playerHealth);
+                m_uiController.SetOpponentHealth(m_enemyHealth);
+
                 m_canSpawn = false;
                 removeListener = true;
             }
@@ -176,7 +170,19 @@ public class GameController : MonoBehaviour
 
     public void ChickAttack()
     {
+        --m_enemyHealth;
+
+        if (m_enemyHealth <= 0)
+        {
+            m_inGame = false;
+            m_spawnedPlayer.Win();
+            m_spawnedEnemy.GameOver();
+            m_uiController.SetOpponentHealth(m_enemyHealth);
+            return;
+        }
+
         StartCoroutine(PlayAttack(true));
+        m_uiController.SetOpponentHealth(m_enemyHealth);
     }
 
     public void ChickBlock()
@@ -186,6 +192,19 @@ public class GameController : MonoBehaviour
 
     public void GopAttack()
     {
+        --m_playerHealth;
+        if (m_playerHealth <= 0)
+        {
+            m_inGame = false;
+            m_spawnedPlayer.GameOver();
+            m_spawnedEnemy.Win();
+            m_uiController.SetPlayerHealth(m_playerHealth);
+            return;
+
+        }
+
+        m_uiController.SetPlayerHealth(m_playerHealth);
+
         StartCoroutine(PlayAttack(false));
     }
 

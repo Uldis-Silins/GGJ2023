@@ -18,9 +18,12 @@ public class UI_ComicStripController : MonoBehaviour
     private int m_targetWaypointIndex, m_currentWaypointIndex;
     private float m_waypointTimer;
 
+    public bool IsPlaying { get; private set; }
+
     private void Start()
     {
-        
+        IsPlaying = true;
+        m_comicStripTransform.gameObject.SetActive(true);
     }
 
     private void Update()
@@ -40,5 +43,10 @@ public class UI_ComicStripController : MonoBehaviour
         m_currentWaypointIndex = m_targetWaypointIndex;
         m_targetWaypointIndex++;
         m_waypointTimer = 0f;
+
+        if(m_currentWaypointIndex == m_waypoints.Length)
+        {
+            IsPlaying = false;
+        }
     }
 }

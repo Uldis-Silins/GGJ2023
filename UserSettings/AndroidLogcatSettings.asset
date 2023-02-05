@@ -3,17 +3,11 @@
     "m_SelectedPackage": {
         "deviceId": "RF8MC00W2RV",
         "name": "com.cheapbeer.pubfight",
-        "processId": 478,
+        "processId": 16755,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "RF8MC00W2RV",
-            "name": "com.cheapbeer.pubfight",
-            "processId": 21001,
-            "exited": true
-        },
         {
             "deviceId": "RF8MC00W2RV",
             "name": "com.sec.android.app.launcher",
@@ -23,25 +17,31 @@
         {
             "deviceId": "RF8MC00W2RV",
             "name": "com.cheapbeer.pubfight",
-            "processId": 21845,
+            "processId": 12073,
             "exited": true
         },
         {
             "deviceId": "RF8MC00W2RV",
             "name": "com.cheapbeer.pubfight",
-            "processId": 23666,
+            "processId": 12661,
             "exited": true
         },
         {
             "deviceId": "RF8MC00W2RV",
             "name": "com.cheapbeer.pubfight",
-            "processId": 31889,
+            "processId": 14345,
             "exited": true
         },
         {
             "deviceId": "RF8MC00W2RV",
             "name": "com.cheapbeer.pubfight",
-            "processId": 478,
+            "processId": 15238,
+            "exited": true
+        },
+        {
+            "deviceId": "RF8MC00W2RV",
+            "name": "com.cheapbeer.pubfight",
+            "processId": 16755,
             "exited": false
         },
         {

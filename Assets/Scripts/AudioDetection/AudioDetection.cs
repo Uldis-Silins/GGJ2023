@@ -18,9 +18,11 @@ public class AudioDetection : MonoBehaviour
     public int sampleWindow = 64;
     public AudioSource micSource;
 
+    public bool isDebug;
+
     public GameController gameController;
 
-    public Image lowBar, hiBar;
+    public Image voiceBar, timeBar;
 
     private AudioClip m_microphoneClip;
 
@@ -45,6 +47,7 @@ public class AudioDetection : MonoBehaviour
     {
         GetMicrophoneAudio();
         m_currentData = m_data[m_curIndex];
+        if (isDebug) m_currentData.targetLoudness /= 3;
     }
 
     private void Update()
@@ -57,8 +60,10 @@ public class AudioDetection : MonoBehaviour
         low /= 3;
         hi /= 5;
 
-        lowBar.fillAmount = m_currentData.isLow ? low : 0;
-        hiBar.fillAmount = !m_currentData.isLow ? hi : 0;
+        voiceBar.fillAmount = m_currentData.isLow ? low : hi;
+        timeBar.fillAmount = 1f - (m_currentTimer / m_currentData.targetTime);
+
+        timeBar.color = timeBar.fillAmount < 0.25f ? Color.red : Color.green;
 
         m_freqText.text = m_currentData.isLow ? "LO" : "HI"; 
 
@@ -66,26 +71,26 @@ public class AudioDetection : MonoBehaviour
         {
             if (low > m_currentData.targetLoudness)
             {
-                lowBar.color = Color.green;
-                m_currentTimer += Time.deltaTime;
+                voiceBar.color = Color.green;
+                m_targetReachedTimer += Time.deltaTime;
             }
             else
             {
-                lowBar.color = Color.red;
-                m_currentTimer = 0f;
+                voiceBar.color = Color.red;
+                m_targetReachedTimer = 0f;
             }
         }
         else
         {
             if (hi > m_currentData.targetLoudness)
             {
-                hiBar.color = Color.green;
-                m_currentTimer += Time.deltaTime;
+                voiceBar.color = Color.green;
+                m_targetReachedTimer += Time.deltaTime;
             }
             else
             {
-                hiBar.color = Color.red;
-                m_currentTimer = 0f;
+                voiceBar.color = Color.red;
+                m_targetReachedTimer = 0f;
             }
         }
 
@@ -124,7 +129,15 @@ public class AudioDetection : MonoBehaviour
 
             m_currentData = m_data[m_curIndex % m_data.Length];
             m_currentData.playerAttack = Random.value > 0.5f ? false : true;
+            m_targetReachedTimer = 0f;
             m_currentTimer = 0f;
+
+            if (isDebug) m_currentData.targetLoudness /= 3;
+        }
+
+        if (gameController.InGame)
+        {
+            m_currentTimer += Time.deltaTime;
         }
     }
 
