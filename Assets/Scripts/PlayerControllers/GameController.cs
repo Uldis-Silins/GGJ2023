@@ -115,6 +115,8 @@ public class GameController : MonoBehaviour
                 m_uiController.SetPlayerHealth(m_playerHealth);
                 m_uiController.SetOpponentHealth(m_enemyHealth);
 
+                m_uiController.ChangeState(UI_Controller.StateType.Fight);
+
                 m_canSpawn = false;
                 removeListener = true;
             }

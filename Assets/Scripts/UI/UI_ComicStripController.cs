@@ -33,6 +33,12 @@ public class UI_ComicStripController : MonoBehaviour
             SetNextWapoint();
         }
 
+        if (m_targetWaypointIndex >= m_waypoints.Length)
+        {
+            IsPlaying = false;
+            return;
+        }
+
         m_comicStripTransform.anchoredPosition = Vector3.Lerp(m_waypoints[m_currentWaypointIndex].position, m_waypoints[m_targetWaypointIndex].position, m_waypoints[m_currentWaypointIndex].curve.Evaluate(m_waypointTimer / m_waypoints[m_currentWaypointIndex].time));
 
         m_waypointTimer += Time.deltaTime;
@@ -43,10 +49,5 @@ public class UI_ComicStripController : MonoBehaviour
         m_currentWaypointIndex = m_targetWaypointIndex;
         m_targetWaypointIndex++;
         m_waypointTimer = 0f;
-
-        if(m_currentWaypointIndex == m_waypoints.Length)
-        {
-            IsPlaying = false;
-        }
     }
 }

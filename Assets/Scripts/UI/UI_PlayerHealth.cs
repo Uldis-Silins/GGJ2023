@@ -11,7 +11,7 @@ public class UI_PlayerHealth : MonoBehaviour
 
     public void SetHealthImage(int health)
     {
-        health = Mathf.Clamp(health, 0, healthAmountSprites.Length - 1);
-        m_healthImage.sprite = healthAmountSprites[health];
+        int index = healthAmountSprites.Length - health;
+        m_healthImage.sprite = healthAmountSprites[index];
     }
 }

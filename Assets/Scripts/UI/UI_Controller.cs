@@ -42,8 +42,8 @@ public class UI_Controller : MonoBehaviour
         m_stateHandlers.Add(StateType.Fight, EnterState_Fight);
         m_stateHandlers.Add(StateType.Comic, EnterState_Comic);
 
-        m_currentState = new StateHandler(EnterState_Fight);
-        ToggleState(StateType.Fight, true);
+        m_currentState = new StateHandler(EnterState_Comic);
+        ToggleState(StateType.Fight, false);
     }
 
     private void Update()
@@ -83,7 +83,7 @@ public class UI_Controller : MonoBehaviour
     private void EnterState_Fight()
     {
         CurrentState = StateType.Fight;
-
+        ToggleState(StateType.Fight, true);
         m_currentState = State_Fight;
     }
 
@@ -97,14 +97,14 @@ public class UI_Controller : MonoBehaviour
 
     private void ExitState_Fight(StateHandler targetState)
     {
-        ToggleState(CurrentState, false);
+        ToggleState(StateType.Fight, false);
         m_currentState = targetState;
     }
 
     private void EnterState_Comic()
     {
         CurrentState = StateType.Comic;
-        m_comicStripController.gameObject.SetActive(true);
+        ToggleState(StateType.Comic, true);
         m_currentState = State_Comic;
     }
 
@@ -120,7 +120,7 @@ public class UI_Controller : MonoBehaviour
 
     private void ExitState_Comic(StateHandler targetState)
     {
-        ToggleState(CurrentState, false);
+        ToggleState(StateType.Comic, false);
         m_currentState = targetState;
     }
     #endregion  // ~States

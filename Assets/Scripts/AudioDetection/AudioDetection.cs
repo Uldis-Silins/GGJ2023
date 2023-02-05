@@ -32,7 +32,7 @@ public class AudioDetection : MonoBehaviour
     private float m_lowAmount;
     private float m_hiAmount;
 
-    [SerializeField] private TextMeshProUGUI m_freqText;
+    [SerializeField] private Image[] m_clefs;
     [SerializeField] private AudioData[] m_data;
 
     private AudioData m_currentData;
@@ -52,6 +52,8 @@ public class AudioDetection : MonoBehaviour
 
     private void Update()
     {
+        if (!gameController.InGame) return;
+
         GetSpectrum();
 
         float low = m_freqBands[0] + m_freqBands[1] + m_freqBands[2];
@@ -65,7 +67,16 @@ public class AudioDetection : MonoBehaviour
 
         timeBar.color = timeBar.fillAmount < 0.25f ? Color.red : Color.green;
 
-        m_freqText.text = m_currentData.isLow ? "LO" : "HI"; 
+        if(m_currentData.isLow)
+        {
+            m_clefs[0].enabled = true;
+            m_clefs[1].enabled = false;
+        }
+        else
+        {
+            m_clefs[0].enabled = false;
+            m_clefs[1].enabled = true;
+        }
 
         if (m_currentData.isLow)
         {
