@@ -150,22 +150,45 @@ public class GameActions : MonoBehaviour
             PlayerCharacter playerCharacter = gameNetworkCore.GetPlayerByIp(actionFrom.Substring(actionFrom.LastIndexOf('O') + 2));
             playerCharacter.beerCount = byte.Parse(actionFrom[actionFrom.LastIndexOf('O') + 1].ToString());
             highConnectLayer.OnRecieveBlock(playerCharacter.mode);
-            if (playerCharacter.mode == PlayerCharacterMode.CHIKA && chikaStatusText)
+            PlayerCharacter myPlayer = gameNetworkCore.GetMyPlayer();
+            if (playerCharacter.mode == PlayerCharacterMode.GOPSTOP && chikaStatusText)
             {
-                chikaStatusText.text = "HP " + playerCharacter.beerCount + "Injured by: BLOCK?!";
+                if(myPlayer.mode == PlayerCharacterMode.CHIKA)
+                {
+                    StartCoroutine(BlockDelay());
+                }
+                chikaStatusText.text = "HP " + playerCharacter.beerCount + "Blocking";
             }
-            else if (playerCharacter.mode == PlayerCharacterMode.GOPSTOP && gopstopStatusText)
+            else if (playerCharacter.mode == PlayerCharacterMode.CHIKA && gopstopStatusText)
             {
-                gopstopStatusText.text = "HP " + playerCharacter.beerCount + "Injured by: BLOCK?!";
+                if (myPlayer.mode == PlayerCharacterMode.GOPSTOP)
+                {
+                    StartCoroutine(BlockDelay());
+                }
+                gopstopStatusText.text = "HP " + playerCharacter.beerCount + "Blocking";
             }
         }
         else if (actionFrom[0] == 'M')
         {
-           // myStatusText.text = "I got BLOCK";
-           // opponentStatusText.text = "Saving";
+            // myStatusText.text = "I got BLOCK";
+            // opponentStatusText.text = "Saving";
             PlayerCharacter player = gameNetworkCore.GetMyPlayer();
             BroadcastOponentBlock(player);
         }
+    }
+    public void ReciveBlockOff(string actionFrom)
+    {
+            PlayerCharacter playerCharacter = gameNetworkCore.GetPlayerByIp(actionFrom.Substring(actionFrom.LastIndexOf('O') + 2));
+            playerCharacter.beerCount = byte.Parse(actionFrom[actionFrom.LastIndexOf('O') + 1].ToString());
+            highConnectLayer.OnRecieveBlockOff(playerCharacter.mode);
+            if (playerCharacter.mode == PlayerCharacterMode.CHIKA && chikaStatusText)
+            {
+                chikaStatusText.text = "HP " + playerCharacter.beerCount + "BlockOff";
+            }
+            else if (playerCharacter.mode == PlayerCharacterMode.GOPSTOP && gopstopStatusText)
+            {
+                gopstopStatusText.text = "HP " + playerCharacter.beerCount + "BlockOff";
+            }
     }
     //fails
     public void ReciveAgressionFail(string actionFrom)//BecauseOfBlock
@@ -180,5 +203,12 @@ public class GameActions : MonoBehaviour
     void ReciveIdle(string actionFrom)
     {
 
+    }   
+
+    IEnumerator BlockDelay()
+    {
+        yield return new WaitForSeconds(1.5f);
+        PlayerCharacter player = gameNetworkCore.GetMyPlayer();
+        BroadcastHealthAction("blj O", player);
     }
 }

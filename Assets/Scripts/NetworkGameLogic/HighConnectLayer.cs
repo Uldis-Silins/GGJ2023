@@ -9,6 +9,7 @@ public class HighConnectLayer : MonoBehaviour
     private GameActions gameActions;
     public UnityAction<int> onRecievedAttack;
     public UnityAction<int> onRecievedBlock;
+    public UnityAction<int> onRecievedBlockOff;
     public UnityAction<int> onRecievedPunch;
 
     public UnityAction onNetworkReady;
@@ -60,22 +61,33 @@ public class HighConnectLayer : MonoBehaviour
     {
         if (playerCharacterMode == PlayerCharacterMode.GOPSTOP)
         {
-            onRecievedBlock?.Invoke(0);
+            onRecievedPunch?.Invoke(0);
         }
         else if (playerCharacterMode == PlayerCharacterMode.CHIKA)
         {
-            onRecievedBlock?.Invoke(1);
+            onRecievedPunch?.Invoke(1);
         }
     }
     public void OnRecieveBlock(PlayerCharacterMode playerCharacterMode)
     {
         if (playerCharacterMode == PlayerCharacterMode.GOPSTOP)
         {
-            onRecievedPunch?.Invoke(1);
+            onRecievedBlock?.Invoke(1);
         }
         else if (playerCharacterMode == PlayerCharacterMode.CHIKA)
         {
-            onRecievedPunch?.Invoke(0);
+            onRecievedBlock?.Invoke(0);
+        }
+    }
+    public void OnRecieveBlockOff(PlayerCharacterMode playerCharacterMode)
+    {
+        if (playerCharacterMode == PlayerCharacterMode.GOPSTOP)
+        {
+            onRecievedBlockOff?.Invoke(0);
+        }
+        else if (playerCharacterMode == PlayerCharacterMode.CHIKA)
+        {
+            onRecievedBlockOff?.Invoke(1);
         }
     }
 
