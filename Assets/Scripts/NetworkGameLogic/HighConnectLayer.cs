@@ -78,4 +78,13 @@ public class HighConnectLayer : MonoBehaviour
             onRecievedPunch?.Invoke(0);
         }
     }
+
+    public void OnRecieveNetworkReady()//ready do not touch
+    {
+        onNetworkReady?.Invoke();
+    }
+    public void OnGameReady()
+    {
+        onGameReady?.Invoke();
+    }
 }
