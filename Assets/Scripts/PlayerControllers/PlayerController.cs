@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private PlayerModels m_playerModels;
 	[SerializeField] private Transform m_enemyPositionTransform;
 
+	[SerializeField] private HighConnectLayer m_connectLayer;
+
 	private Animator m_animator;
 	private HitParticlesController m_particles;
 
@@ -67,6 +69,7 @@ public class PlayerController : MonoBehaviour
 			case CommandSynonyms.ActionType.Attack:
 				m_animator.SetInteger(m_attackIdAnimationHash, Random.Range(0, 4));
 				m_animator.SetTrigger(m_attackAnimationHash);
+				m_connectLayer.SentRemoteAttack();
 				break;
 			case CommandSynonyms.ActionType.Defence:
 				m_animator.SetInteger(m_defenceIdAnimationHash, Random.Range(0, 3));

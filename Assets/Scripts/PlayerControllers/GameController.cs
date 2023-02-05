@@ -11,18 +11,23 @@ public class GameController : MonoBehaviour
     [SerializeField] private EnemyController m_enemyPrefab;
     [SerializeField] private InputController m_inputController;
     [SerializeField] private UI_Controller m_uiController;
+    [SerializeField] private HighConnectLayer m_connectLayer;
 
     private PlayerController m_spawnedPlayer;
     private EnemyController m_spawnedEnemy;
 
+    private int m_myPlayerId;
+
     private void OnEnable()
     {
         m_arPlaneManager.planesChanged += HandlePlanesChanged;
+        m_connectLayer.onRecievedAttack += ReceiveRemoteAttack;
     }
 
     private void OnDisable()
     {
         m_arPlaneManager.planesChanged -= HandlePlanesChanged;
+        m_connectLayer.onRecievedAttack -= ReceiveRemoteAttack;
     }
 
     private void Start()
@@ -63,6 +68,12 @@ public class GameController : MonoBehaviour
     }
 #endif
 
+    public void OnConnectClick(int playerId)
+    {
+        m_myPlayerId = playerId;
+        m_connectLayer.SetPlayer(playerId);
+    }
+
     private void HandlePlanesChanged(ARPlanesChangedEventArgs args)
     {
         bool removeListener = false;
@@ -92,6 +103,14 @@ public class GameController : MonoBehaviour
         if(m_spawnedPlayer != null)
         {
             m_spawnedPlayer.ExecuteCommand(command);
+        }
+    }
+
+    public void ReceiveRemoteAttack(int playerId)
+    {
+        if(playerId != m_myPlayerId)
+        {
+            m_spawnedEnemy.ExecuteCommand(CommandSynonyms.ActionType.Attack);
         }
     }
 }
