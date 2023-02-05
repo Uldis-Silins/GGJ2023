@@ -42,6 +42,7 @@ public class GameController : MonoBehaviour
         {
             m_spawnedPlayer = Instantiate<PlayerController>(m_playerPrefab, Vector3.zero, Quaternion.identity);
             m_spawnedPlayer.SpawnModel(0);
+            m_spawnedPlayer.ConnectLayer = m_connectLayer;
             m_spawnedEnemy = Instantiate<EnemyController>(m_enemyPrefab, m_spawnedPlayer.EnemyPosition, Quaternion.identity);
             m_spawnedEnemy.playerTransform = m_spawnedPlayer.transform;
             m_spawnedEnemy.SpawnModel(1);

@@ -1097,6 +1097,17 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &782628376 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1903801919286141065, guid: f3158b4881d6d054bba64fef337d5adc, type: 3}
+  m_PrefabInstance: {fileID: 814226115}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20eff1f967e61846a9c319248e4b3c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &814226115
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1885,8 +1896,8 @@ MonoBehaviour:
   m_playerPrefab: {fileID: 5746402507004538725, guid: e97303631f3724886911fdc6e26be0a7, type: 3}
   m_enemyPrefab: {fileID: 1203246124406022539, guid: 048704272133447938a4931dc4ed0ba2, type: 3}
   m_inputController: {fileID: 1476611441}
-  m_uiController: {fileID: 0}
-  m_connectLayer: {fileID: 0}
+  m_uiController: {fileID: 2008392363}
+  m_connectLayer: {fileID: 782628376}
 --- !u!4 &1821387409
 Transform:
   m_ObjectHideFlags: 0

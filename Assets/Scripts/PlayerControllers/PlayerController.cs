@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
 	private readonly int m_hitIdAnimationHash = Animator.StringToHash("HitId");
 
 	public Vector3 EnemyPosition { get { return m_enemyPositionTransform.position; } }
+	public HighConnectLayer ConnectLayer { set { if (m_connectLayer == null) m_connectLayer = value; } }
 
     private void Update()
     {
