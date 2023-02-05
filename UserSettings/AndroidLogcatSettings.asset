@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "RF8MC00W2RV",
         "name": "com.cheapbeer.pubfight",
-        "processId": 23384,
+        "processId": 26026,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -17,49 +17,37 @@
         {
             "deviceId": "RF8MC00W2RV",
             "name": "com.cheapbeer.pubfight",
-            "processId": 15653,
-            "exited": true
-        },
-        {
-            "deviceId": "RF8MC00W2RV",
-            "name": "com.cheapbeer.pubfight",
-            "processId": 5085,
-            "exited": true
-        },
-        {
-            "deviceId": "RF8MC00W2RV",
-            "name": "com.cheapbeer.pubfight",
-            "processId": 10826,
-            "exited": true
-        },
-        {
-            "deviceId": "RF8MC00W2RV",
-            "name": "com.cheapbeer.pubfight",
-            "processId": 11326,
-            "exited": true
-        },
-        {
-            "deviceId": "RF8MC00W2RV",
-            "name": "com.cheapbeer.pubfight",
-            "processId": 15176,
-            "exited": false
-        },
-        {
-            "deviceId": "RF8MC00W2RV",
-            "name": "com.cheapbeer.pubfight",
             "processId": 16134,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "RF8MC00W2RV",
             "name": "com.cheapbeer.pubfight",
             "processId": 19539,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "RF8MC00W2RV",
             "name": "com.cheapbeer.pubfight",
             "processId": 23384,
+            "exited": true
+        },
+        {
+            "deviceId": "RF8MC00W2RV",
+            "name": "com.cheapbeer.pubfight",
+            "processId": 24521,
+            "exited": true
+        },
+        {
+            "deviceId": "RF8MC00W2RV",
+            "name": "com.cheapbeer.pubfight",
+            "processId": 24918,
+            "exited": false
+        },
+        {
+            "deviceId": "RF8MC00W2RV",
+            "name": "com.cheapbeer.pubfight",
+            "processId": 26026,
             "exited": false
         }
     ],
