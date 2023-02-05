@@ -115,14 +115,14 @@ public class LocalNetworkLookup : MonoBehaviour
                 System.Math.Max(System.Threading.Interlocked.Increment(ref i), i - 1);
                 isNothing = false;
             }
-            if (isNothing)
-            {
-                outputTextUn.text = "Searching...";
-            }
-            else
-            {
-                outputTextUn.text = stringBuilder.ToString();
-            }
+            //if (isNothing)
+            //{
+            //    outputTextUn.text = "Searching...";
+            //}
+            //else
+            //{
+            //    outputTextUn.text = stringBuilder.ToString();
+            //}
 
 
             //public int expectedUnityCount = 3;

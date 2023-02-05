@@ -349,6 +349,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 392673721}
+  - component: {fileID: 392673722}
   m_Layer: 5
   m_Name: MyHealth
   m_TagString: Untagged
@@ -378,6 +379,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &392673722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392673720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b2c91a44f504d42ac21b1f75e5981f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_healthImage: {fileID: 1001267101}
+  m_healthAmountSprites: []
 --- !u!1 &404661801
 GameObject:
   m_ObjectHideFlags: 0
@@ -1834,6 +1849,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1583940937}
+  - component: {fileID: 1583940938}
   m_Layer: 5
   m_Name: OpponentHealth
   m_TagString: Untagged
@@ -1863,6 +1879,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1583940938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583940936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b2c91a44f504d42ac21b1f75e5981f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_healthImage: {fileID: 336906416}
+  m_healthAmountSprites: []
 --- !u!1 &1821387407
 GameObject:
   m_ObjectHideFlags: 0
@@ -2151,8 +2181,8 @@ MonoBehaviour:
   - type: 3
     objects:
     - {fileID: 424301173}
-  m_playerHealth: {fileID: 0}
-  m_opponentHealth: {fileID: 0}
+  m_playerHealth: {fileID: 392673722}
+  m_opponentHealth: {fileID: 1583940938}
 --- !u!4 &2008392364
 Transform:
   m_ObjectHideFlags: 0
