@@ -12,7 +12,8 @@ public class HighConnectLayer : MonoBehaviour
 
     public void SetPlayer(int playerTypeId)
     {
-        PlayerCharacterMode playerCharacterMode = (PlayerCharacterMode)playerTypeId;
+        PlayerCharacterMode playerCharacterMode = playerTypeId == 0 ? PlayerCharacterMode.GOPSTOP : PlayerCharacterMode.CHIKA;
+
         switch (playerCharacterMode)
         {
             case PlayerCharacterMode.CHIKA:
