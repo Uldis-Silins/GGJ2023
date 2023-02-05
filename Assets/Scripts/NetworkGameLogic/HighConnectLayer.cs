@@ -12,20 +12,17 @@ public class HighConnectLayer : MonoBehaviour
 
     public void SetPlayer(int playerTypeId)
     {
-        PlayerCharacterMode playerCharacterMode = playerTypeId == 0 ? PlayerCharacterMode.GOPSTOP : PlayerCharacterMode.CHIKA;
-
-        switch (playerCharacterMode)
+        if(playerTypeId == 0)
         {
-            case PlayerCharacterMode.CHIKA:
-                {
-                    gameActions.TryRegisterAsChika();
-                }
-                break;
-            case PlayerCharacterMode.GOPSTOP:
-                {
-                    gameActions.TryRegisterAsGopstop();
-                }
-                break;
+            gameActions.TryRegisterAsGopstop();
+        }
+        else if(playerTypeId == 1)
+        {
+            gameActions.TryRegisterAsChika();
+        }
+        else
+        {
+            gameActions.TryRegisterAsLookyloos();
         }
     }
 
@@ -36,6 +33,6 @@ public class HighConnectLayer : MonoBehaviour
 
     public void OnRecieveHit(PlayerCharacterMode playerCharacterMode)
     {
-        onRecievedAttack.Invoke((int)playerCharacterMode);
+        onRecievedAttack?.Invoke((int)playerCharacterMode);
     }
 }
