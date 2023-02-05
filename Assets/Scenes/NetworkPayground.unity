@@ -3300,6 +3300,14 @@ PrefabInstance:
       propertyPath: outputTextUn
       value: 
       objectReference: {fileID: 1861526865}
+    - target: {fileID: 9088028500236882581, guid: f3158b4881d6d054bba64fef337d5adc, type: 3}
+      propertyPath: myRole
+      value: 
+      objectReference: {fileID: 1372591753}
+    - target: {fileID: 9088028500236882581, guid: f3158b4881d6d054bba64fef337d5adc, type: 3}
+      propertyPath: usedRoles
+      value: 
+      objectReference: {fileID: 1437489177}
     - target: {fileID: 9088028500236882583, guid: f3158b4881d6d054bba64fef337d5adc, type: 3}
       propertyPath: chikaStatusText
       value: 
