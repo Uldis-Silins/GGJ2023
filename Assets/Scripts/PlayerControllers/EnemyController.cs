@@ -8,16 +8,18 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private PlayerModels m_playerModels;
 
-    [SerializeField] private Animator m_animator;
+    private Animator m_animator;
+    private HitParticlesController m_particles;
 
     private float m_defenceAnimationTimer = 0f;
     private bool m_inDefence;
 
-    private readonly int m_hookAttackAnimationHash = Animator.StringToHash("HookAttack");
-    private readonly int m_uppercutAttackAnimationHash = Animator.StringToHash("UppercutAttack");
+    private readonly int m_attackAnimationHash = Animator.StringToHash("Attack");
     private readonly int m_blockDefenceAnimationHash = Animator.StringToHash("Block");
     private readonly int m_hitAnimationHash = Animator.StringToHash("Hit");
-
+    private readonly int m_attackIdAnimationHash = Animator.StringToHash("AttackId");
+    private readonly int m_defenceIdAnimationHash = Animator.StringToHash("DefenceId");
+    private readonly int m_hitIdAnimationHash = Animator.StringToHash("HitId");
 
     private void Update()
     {
@@ -38,12 +40,16 @@ public class EnemyController : MonoBehaviour
 
     public void SpawnModel(int index)
     {
-        m_animator = Instantiate<GameObject>(m_playerModels.models[index].playerObject, transform).GetComponentInChildren<Animator>();
-        m_animator.transform.eulerAngles = m_playerModels.models[index].eulerOffset;
+        var instance = Instantiate<GameObject>(m_playerModels.models[index].playerObject, transform);
+        m_animator = instance.GetComponentInChildren<Animator>();
+        m_particles = instance.GetComponent<HitParticlesController>();
+        m_animator.transform.parent.eulerAngles = m_playerModels.models[index].eulerOffset;
     }
 
-    public void SetHit()
+    public void SetHit(int hitId)
     {
+        m_particles.PlayBloodHit(Random.Range(0, 2));
+        m_animator.SetInteger(m_hitIdAnimationHash, hitId);
         m_animator.SetTrigger(m_hitAnimationHash);
     }
 
@@ -52,9 +58,11 @@ public class EnemyController : MonoBehaviour
         switch (actionType)
         {
             case CommandSynonyms.ActionType.Attack:
-                m_animator.SetTrigger(Random.value > 0.5f ? m_hookAttackAnimationHash : m_uppercutAttackAnimationHash);
+                m_animator.SetInteger(m_attackIdAnimationHash, Random.Range(0, 5));
+                m_animator.SetTrigger(m_attackAnimationHash);
                 break;
             case CommandSynonyms.ActionType.Defence:
+                m_animator.SetInteger(m_defenceIdAnimationHash, Random.Range(0, 4));
                 m_animator.SetBool(m_blockDefenceAnimationHash, true);
                 m_defenceAnimationTimer = 1.5f;
                 m_inDefence = true;

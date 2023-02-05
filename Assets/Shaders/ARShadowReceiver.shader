@@ -11,7 +11,7 @@ Shader "URP AR Shadow Receiver"
         {
             "RenderPipeline"="UniversalPipeline"
             "RenderType"="Transparent"
-            "Queue"="Transparent-1"
+            "Queue"="AlphaTest"
         }
  
         Pass

@@ -14,6 +14,14 @@ public class UI_SpeechToTextDebug : MonoBehaviour
         m_inputController.onResultReceived.AddListener(HandleResultReceived);
     }
 
+    private void Update()
+    {
+        if(KKSpeech.SpeechRecognizer.IsRecording())
+        {
+            m_resultText.text = "...";
+        }
+    }
+
     private void HandleResultReceived(string result)
     {
         m_resultText.text = result;

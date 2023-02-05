@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+//using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 
 public class GameController : MonoBehaviour
@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private PlayerController m_playerPrefab;
     [SerializeField] private EnemyController m_enemyPrefab;
     [SerializeField] private InputController m_inputController;
+    [SerializeField] private UI_Controller m_uiController;
 
     private PlayerController m_spawnedPlayer;
     private EnemyController m_spawnedEnemy;
@@ -46,16 +47,16 @@ public class GameController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.A))
             {
                 m_spawnedPlayer.ExecuteCommand("brunch");
-                if(Random.value > 0.5f) m_spawnedEnemy.ExecuteCommand(CommandSynonyms.ActionType.Defence); else m_spawnedEnemy.SetHit();
+                if(Random.value > 0.5f) m_spawnedEnemy.ExecuteCommand(CommandSynonyms.ActionType.Defence); else m_spawnedEnemy.SetHit(Random.Range(0, 4));
             }
             else if(Input.GetKeyDown(KeyCode.S))
             {
-                m_spawnedPlayer.ExecuteCommand("block");
+                m_spawnedPlayer.ExecuteCommand("black");
                 m_spawnedEnemy.ExecuteCommand(CommandSynonyms.ActionType.Attack);
             }
             else if(Input.GetKeyDown(KeyCode.D))
             {
-                m_spawnedPlayer.SetHit();
+                m_spawnedPlayer.SetHit(Random.Range(0, 4));
                 m_spawnedEnemy.ExecuteCommand(CommandSynonyms.ActionType.Attack);
             }
         }
