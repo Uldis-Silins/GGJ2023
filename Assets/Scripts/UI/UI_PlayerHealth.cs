@@ -7,11 +7,11 @@ public class UI_PlayerHealth : MonoBehaviour
 {
     [SerializeField] private Image m_healthImage;
 
-    [SerializeField] private Sprite[] m_healthAmountSprites;
+    public Sprite[] healthAmountSprites;
 
     public void SetHealthImage(int health)
     {
-        health = Mathf.Clamp(health, 0, m_healthAmountSprites.Length - 1);
-        m_healthImage.sprite = m_healthAmountSprites[health];
+        health = Mathf.Clamp(health, 0, healthAmountSprites.Length - 1);
+        m_healthImage.sprite = healthAmountSprites[health];
     }
 }

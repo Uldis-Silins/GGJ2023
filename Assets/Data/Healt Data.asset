@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af6ce5385bc574ba588cfb67d1ef702f, type: 3}
+  m_Name: Healt Data
+  m_EditorClassIdentifier: 
+  sprites:
+  - healthSprites:
+    - {fileID: 21300000, guid: b2b7150d481954f658bcf3c85b32630b, type: 3}
+    - {fileID: 21300000, guid: b19099ec8d2544c9187cf6d3a3fc4dd2, type: 3}
+    - {fileID: 21300000, guid: b54c27d0bf0f24a258cff08c9025e73d, type: 3}
+    - {fileID: 21300000, guid: bdac6092a93074e5d8267214ec5e4db9, type: 3}
+    - {fileID: 21300000, guid: 07d8a896962bf4fcb9fdb3c4a593f73b, type: 3}
+  - healthSprites:
+    - {fileID: 21300000, guid: 8b34d685fa3014548a435cf4e5f16ed1, type: 3}
+    - {fileID: 21300000, guid: c5feeadc7f3384a998206afbf8fb9bd5, type: 3}
+    - {fileID: 21300000, guid: e59fc9220c1e74f609add4de2d5d6080, type: 3}
+    - {fileID: 21300000, guid: c430246496c0841418a809efca8fa765, type: 3}
+    - {fileID: 21300000, guid: a9b336177c818477d94c877c7ba35107, type: 3}

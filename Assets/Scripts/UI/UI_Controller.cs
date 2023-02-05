@@ -27,6 +27,7 @@ public class UI_Controller : MonoBehaviour
 
     [SerializeField] private StateObjects[] m_stateObjects;
     [SerializeField] private UI_PlayerHealth m_playerHealth, m_opponentHealth;
+    [SerializeField] private HealthData m_healthData;
 
     private Dictionary<StateType, StateHandler> m_stateHandlers;
 
@@ -54,6 +55,16 @@ public class UI_Controller : MonoBehaviour
     public void ChangeState(StateType targetState)
     {
         CurrentState = targetState;
+    }
+
+    public void SetPlayerHealthData(int playerId)
+    {
+        m_playerHealth.healthAmountSprites = m_healthData.sprites[playerId].healthSprites;
+    }
+
+    public void SetOpponentHealthData(int playerId)
+    {
+        m_opponentHealth.healthAmountSprites = m_healthData.sprites[playerId].healthSprites;
     }
 
     public void SetPlayerHealth(int amount)

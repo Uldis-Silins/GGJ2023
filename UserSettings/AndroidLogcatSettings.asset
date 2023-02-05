@@ -3,29 +3,11 @@
     "m_SelectedPackage": {
         "deviceId": "RF8MC00W2RV",
         "name": "com.cheapbeer.pubfight",
-        "processId": 21845,
+        "processId": 478,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "RF8MC00W2RV",
-            "name": "com.cheapbeer.pubfight",
-            "processId": 19104,
-            "exited": true
-        },
-        {
-            "deviceId": "RF8MC00W2RV",
-            "name": "com.cheapbeer.pubfight",
-            "processId": 19650,
-            "exited": true
-        },
-        {
-            "deviceId": "RF8MC00W2RV",
-            "name": "com.cheapbeer.pubfight",
-            "processId": 20383,
-            "exited": true
-        },
         {
             "deviceId": "RF8MC00W2RV",
             "name": "com.cheapbeer.pubfight",
@@ -42,12 +24,42 @@
             "deviceId": "RF8MC00W2RV",
             "name": "com.cheapbeer.pubfight",
             "processId": 21845,
+            "exited": true
+        },
+        {
+            "deviceId": "RF8MC00W2RV",
+            "name": "com.cheapbeer.pubfight",
+            "processId": 23666,
+            "exited": true
+        },
+        {
+            "deviceId": "RF8MC00W2RV",
+            "name": "com.cheapbeer.pubfight",
+            "processId": 31889,
+            "exited": true
+        },
+        {
+            "deviceId": "RF8MC00W2RV",
+            "name": "com.cheapbeer.pubfight",
+            "processId": 478,
             "exited": false
         },
         {
             "deviceId": "5a34db9e",
             "name": "com.cheapbeer.pubfight",
             "processId": 2648,
+            "exited": false
+        },
+        {
+            "deviceId": "R52NB0D19RN",
+            "name": "com.cheapbeer.pubfight",
+            "processId": 19794,
+            "exited": false
+        },
+        {
+            "deviceId": "R52NB0D19RN",
+            "name": "com.cheapbeer.pubfight",
+            "processId": 20543,
             "exited": false
         }
     ],

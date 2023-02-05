@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private EnemyController m_enemyPrefab;
     [SerializeField] private InputController m_inputController;
     [SerializeField] private UI_Controller m_uiController;
-    [SerializeField] private HighConnectLayer m_connectLayer;
+    //[SerializeField] private HighConnectLayer m_connectLayer;
 
     private PlayerController m_spawnedPlayer;
     private EnemyController m_spawnedEnemy;
@@ -28,24 +28,24 @@ public class GameController : MonoBehaviour
     private void OnEnable()
     {
         m_arPlaneManager.planesChanged += HandlePlanesChanged;
-        m_connectLayer.onRecievedAttack += ReceiveRemoteAttack;
-        m_connectLayer.onRecievedBlock += ReceiveRemoteBlock;
-        m_connectLayer.onNetworkReady += ReceiveNetworkReady;
-        m_connectLayer.onGameReady += ReceiveGameStart;
+        //m_connectLayer.onRecievedAttack += ReceiveRemoteAttack;
+        //m_connectLayer.onRecievedBlock += ReceiveRemoteBlock;
+        //m_connectLayer.onNetworkReady += ReceiveNetworkReady;
+        //m_connectLayer.onGameReady += ReceiveGameStart;
     }
 
     private void OnDisable()
     {
         m_arPlaneManager.planesChanged -= HandlePlanesChanged;
-        m_connectLayer.onRecievedAttack -= ReceiveRemoteAttack;
-        m_connectLayer.onRecievedBlock -= ReceiveRemoteBlock;
-        m_connectLayer.onNetworkReady -= ReceiveNetworkReady;
-        m_connectLayer.onGameReady -= ReceiveGameStart;
+        //m_connectLayer.onRecievedAttack -= ReceiveRemoteAttack;
+        //m_connectLayer.onRecievedBlock -= ReceiveRemoteBlock;
+        //m_connectLayer.onNetworkReady -= ReceiveNetworkReady;
+        //m_connectLayer.onGameReady -= ReceiveGameStart;
     }
 
     private void Start()
     {
-        m_inputController.onResultReceived.AddListener(HandleCommandInput);
+        //m_inputController.onResultReceived.AddListener(HandleCommandInput);
         gopButton.gameObject.SetActive(false);
         chikButton.gameObject.SetActive(false);
     }
@@ -63,7 +63,7 @@ public class GameController : MonoBehaviour
         {
             m_spawnedPlayer = Instantiate<PlayerController>(m_playerPrefab, Vector3.zero, Quaternion.identity);
             m_spawnedPlayer.SpawnModel(0);
-            m_spawnedPlayer.ConnectLayer = m_connectLayer;
+            //m_spawnedPlayer.ConnectLayer = m_connectLayer;
             m_spawnedEnemy = Instantiate<EnemyController>(m_enemyPrefab, m_spawnedPlayer.EnemyPosition, Quaternion.identity);
             m_spawnedEnemy.playerTransform = m_spawnedPlayer.transform;
             m_spawnedEnemy.SpawnModel(1);
@@ -93,19 +93,7 @@ public class GameController : MonoBehaviour
     {
         if (m_canSpawn)
         {
-            m_myPlayerId = playerId;
-            int modelId = playerId == 0 ? 1 : 0; // 0 - gopstop, but model is id 1 and vice versa
-            m_connectLayer.SetPlayer(playerId);
-            m_spawnedPlayer = Instantiate<PlayerController>(m_playerPrefab, m_spawnPosition, Quaternion.identity);
-            m_spawnedPlayer.SpawnModel(modelId);
-            m_spawnedPlayer.ConnectLayer = m_connectLayer;
-            m_spawnedEnemy = Instantiate<EnemyController>(m_enemyPrefab, m_spawnedPlayer.EnemyPosition, Quaternion.identity);
-            m_spawnedEnemy.playerTransform = m_spawnedPlayer.transform;
-            m_spawnedEnemy.SpawnModel(playerId);    // 0 - gopstop, but model is id 1 and vice versa
-
-            gopButton.gameObject.SetActive(false);
-            chikButton.gameObject.SetActive(false);
-            m_canSpawn = false;
+            
         }
     }
 
@@ -118,7 +106,22 @@ public class GameController : MonoBehaviour
             if (plane.alignment == UnityEngine.XR.ARSubsystems.PlaneAlignment.HorizontalUp && plane.extents.magnitude > 2f && m_spawnedPlayer == null)
             {
                 m_spawnPosition = plane.center;
-                m_canSpawn = true;
+                m_myPlayerId = 0;
+                //m_connectLayer.SetPlayer(m_myPlayerId);
+                m_spawnedPlayer = Instantiate<PlayerController>(m_playerPrefab, m_spawnPosition, Quaternion.identity);
+                m_spawnedPlayer.SpawnModel(m_myPlayerId);
+                //m_spawnedPlayer.ConnectLayer = m_connectLayer;
+                m_uiController.SetPlayerHealthData(m_myPlayerId);
+                m_spawnedEnemy = Instantiate<EnemyController>(m_enemyPrefab, m_spawnedPlayer.EnemyPosition, Quaternion.identity);
+                m_spawnedEnemy.playerTransform = m_spawnedPlayer.transform;
+                m_spawnedEnemy.SpawnModel(1);    // 0 - gopstop, but model is id 1 and vice versa
+                m_uiController.SetPlayerHealthData(1);
+
+                m_uiController.ChangeState(UI_Controller.StateType.Fight);
+
+                gopButton.gameObject.SetActive(false);
+                chikButton.gameObject.SetActive(false);
+                m_canSpawn = false;
                 removeListener = true;
             }
         }
@@ -126,6 +129,14 @@ public class GameController : MonoBehaviour
         if(removeListener)
         {
             m_arPlaneManager.planesChanged -= HandlePlanesChanged;
+        }
+    }
+
+    public void ExecuteCommand(string command)
+    {
+        if(m_spawnedPlayer)
+        {
+            m_spawnedPlayer.ExecuteCommand(command);
         }
     }
 
@@ -161,5 +172,61 @@ public class GameController : MonoBehaviour
     private void ReceiveGameStart()
     {
         m_inGame = true;
+    }
+
+    public void ChickAttack()
+    {
+        StartCoroutine(PlayAttack(true));
+    }
+
+    public void ChickBlock()
+    {
+        StartCoroutine(PlayBlock(true));
+    }
+
+    public void GopAttack()
+    {
+        StartCoroutine(PlayAttack(false));
+    }
+
+    public void GopBlock()
+    {
+        StartCoroutine(PlayBlock(false));
+    }
+
+    private IEnumerator PlayAttack(bool chickAttack)
+    {
+        int attackID = Random.Range(0, 3);
+
+        if (chickAttack)
+        {
+            m_spawnedPlayer.Attack(attackID);
+            yield return new WaitForSeconds(0.25f);
+            m_spawnedEnemy.SetHit(attackID);
+        }
+        else
+        {
+            m_spawnedEnemy.Attack(attackID);
+            yield return new WaitForSeconds(0.25f);
+            m_spawnedPlayer.SetHit(attackID);
+        }
+    }
+
+    private IEnumerator PlayBlock(bool chickBlock)
+    {
+        int attackID = Random.Range(0, 3);
+
+        if (chickBlock)
+        {
+            m_spawnedEnemy.Attack(attackID);
+            yield return new WaitForSeconds(0.25f);
+            m_spawnedPlayer.Defence(attackID);
+        }
+        else
+        {
+            m_spawnedPlayer.Attack(attackID);
+            yield return new WaitForSeconds(0.25f);
+            m_spawnedEnemy.Defence(attackID);
+        }
     }
 }

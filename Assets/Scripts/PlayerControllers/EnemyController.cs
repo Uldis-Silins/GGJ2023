@@ -71,4 +71,18 @@ public class EnemyController : MonoBehaviour
                 break;
         }
     }
+
+    public void Attack(int attackID)
+    {
+        m_animator.SetInteger(m_attackIdAnimationHash, attackID);
+        m_animator.SetTrigger(m_attackAnimationHash);
+    }
+
+    public void Defence(int defenceID)
+    {
+        m_animator.SetInteger(m_defenceIdAnimationHash, defenceID);
+        m_animator.SetBool(m_blockDefenceAnimationHash, true);
+        m_defenceAnimationTimer = 1.5f;
+        m_inDefence = true;
+    }
 }

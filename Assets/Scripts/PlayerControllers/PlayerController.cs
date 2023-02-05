@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private PlayerModels m_playerModels;
 	[SerializeField] private Transform m_enemyPositionTransform;
 
-	[SerializeField] private HighConnectLayer m_connectLayer;
+	//[SerializeField] private HighConnectLayer m_connectLayer;
 
 	private Animator m_animator;
 	private HitParticlesController m_particles;
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
 	private readonly int m_hitIdAnimationHash = Animator.StringToHash("HitId");
 
 	public Vector3 EnemyPosition { get { return m_enemyPositionTransform.position; } }
-	public HighConnectLayer ConnectLayer { set { if (m_connectLayer == null) m_connectLayer = value; } }
+	//public HighConnectLayer ConnectLayer { set { if (m_connectLayer == null) m_connectLayer = value; } }
 
     private void Update()
     {
@@ -70,18 +70,32 @@ public class PlayerController : MonoBehaviour
 			case CommandSynonyms.ActionType.Attack:
 				m_animator.SetInteger(m_attackIdAnimationHash, Random.Range(0, 4));
 				m_animator.SetTrigger(m_attackAnimationHash);
-				m_connectLayer.SentRemoteAttack();
+				//m_connectLayer.SentRemoteAttack();
 				break;
 			case CommandSynonyms.ActionType.Defence:
 				m_animator.SetInteger(m_defenceIdAnimationHash, Random.Range(0, 3));
 				m_animator.SetBool(m_blockDefenceAnimationHash, true);
 				m_defenceAnimationTimer = 1.5f;
 				m_inDefence = true;
-				m_connectLayer.SentRemoteBlock();
+				//m_connectLayer.SentRemoteBlock();
 				break;
 			default:
 				break;
 		}
 	}
+
+	public void Attack(int attackID)
+	{
+        m_animator.SetInteger(m_attackIdAnimationHash, attackID);
+        m_animator.SetTrigger(m_attackAnimationHash);
+    }
+
+	public void Defence(int defenceID)
+	{
+        m_animator.SetInteger(m_defenceIdAnimationHash, defenceID);
+        m_animator.SetBool(m_blockDefenceAnimationHash, true);
+        m_defenceAnimationTimer = 1.5f;
+        m_inDefence = true;
+    }
 }
 
