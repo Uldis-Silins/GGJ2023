@@ -155,7 +155,7 @@ public class AudioDetection : MonoBehaviour
     public void GetMicrophoneAudio()
     {
         string microphoneName = Microphone.devices[0];
-        m_microphoneClip = Microphone.Start(microphoneName, true, 20, AudioSettings.outputSampleRate);
+        m_microphoneClip = Microphone.Start(microphoneName, true, 1, AudioSettings.outputSampleRate);
         micSource.clip = m_microphoneClip;
         micSource.Play();
         micSource.loop = true;
