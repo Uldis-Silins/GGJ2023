@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "RF8MC00W2RV",
+    "m_SelectedDeviceId": "5a34db9e",
     "m_SelectedPackage": {
-        "deviceId": "RF8MC00W2RV",
+        "deviceId": "5a34db9e",
         "name": "com.cheapbeer.pubfight",
-        "processId": 26831,
+        "processId": 18300,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -126,6 +126,72 @@
             "deviceId": "RF8MC00W2RV",
             "name": "com.cheapbeer.pubfight",
             "processId": 26831,
+            "exited": false
+        },
+        {
+            "deviceId": "5a34db9e",
+            "name": "net.oneplus.launcher",
+            "processId": 18497,
+            "exited": false
+        },
+        {
+            "deviceId": "5a34db9e",
+            "name": "com.cheapbeer.pubfight",
+            "processId": 13567,
+            "exited": true
+        },
+        {
+            "deviceId": "5a34db9e",
+            "name": "com.cheapbeer.pubfight",
+            "processId": 13985,
+            "exited": true
+        },
+        {
+            "deviceId": "5a34db9e",
+            "name": "com.cheapbeer.pubfight",
+            "processId": 14487,
+            "exited": true
+        },
+        {
+            "deviceId": "5a34db9e",
+            "name": "com.cheapbeer.pubfight",
+            "processId": 15005,
+            "exited": true
+        },
+        {
+            "deviceId": "5a34db9e",
+            "name": "com.cheapbeer.pubfight",
+            "processId": 15006,
+            "exited": false
+        },
+        {
+            "deviceId": "5a34db9e",
+            "name": "com.cheapbeer.pubfight",
+            "processId": 18296,
+            "exited": false
+        },
+        {
+            "deviceId": "5a34db9e",
+            "name": "com.cheapbeer.pubfight",
+            "processId": 18297,
+            "exited": false
+        },
+        {
+            "deviceId": "5a34db9e",
+            "name": "com.cheapbeer.pubfight",
+            "processId": 18298,
+            "exited": false
+        },
+        {
+            "deviceId": "5a34db9e",
+            "name": "com.cheapbeer.pubfight",
+            "processId": 18300,
+            "exited": false
+        },
+        {
+            "deviceId": "R52NB0D19RN",
+            "name": "com.cheapbeer.pubfight",
+            "processId": 31493,
             "exited": false
         }
     ],
